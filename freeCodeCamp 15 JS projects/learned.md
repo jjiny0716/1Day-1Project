@@ -35,3 +35,26 @@ main {
 ## box-shadow offset 순서
 
 box-shadow의 offset은 x가 먼저온다!! 알고리즘 문제 풀때 y를 먼저 쓰는거나, margin에서 세로방향을 먼저 쓰는 것때문에 헷갈린다. 잘 알아둬야겠다.
+
+# 02 - Simple Counter
+
+## currentTarget vs target 복습
+
+- currentTarget : 이벤트 생성 위치 (this)
+- target : 이벤트 발생 위치
+
+이벤트 위임을 이용한 코드를 작성하면, target이 자식들이 되고, 위에서 받는 요소가 currentTarget.
+
+# 03 - Reviews
+
+## border-style
+
+예제에서 버튼이 약간 나와있는 것처럼 표현이 되어서, 어떻게 한것인지 코드를 살펴봤는데, border-style: outset이라는 속성이 있었다. border-style은 습관적으로 solid만 썼었는데, 여러가지 스타일이 있다는 것을 알아두자.
+
+## document.querySelector가 안먹을때
+
+script로드하는 태그에 defer가 빠졌는지 확인하자. 문서가 로드되지 않았는데 script가 불러져서 생긴 오류이다.
+
+## object-fit
+
+이미지의 크기를 150 x 150픽셀로 지정했는데, 원본 이미지의 비율이 1:1이 아니면, 찌그러지는 현상이 발생한다. 이를 방지하기 위해서 이미지 컨테이너와 object-fit: cover를 이용하자. 가로세로비가 맞지 않으면, 이미지의 일부가 잘려나가지만, 이미지에 변화를 주지 않고 컨테이너를 가득 채운다.
