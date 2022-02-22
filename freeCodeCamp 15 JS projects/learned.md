@@ -58,3 +58,27 @@ script로드하는 태그에 defer가 빠졌는지 확인하자. 문서가 로�
 ## object-fit
 
 이미지의 크기를 150 x 150픽셀로 지정했는데, 원본 이미지의 비율이 1:1이 아니면, 찌그러지는 현상이 발생한다. 이를 방지하기 위해서 이미지 컨테이너와 object-fit: cover를 이용하자. 가로세로비가 맞지 않으면, 이미지의 일부가 잘려나가지만, 이미지에 변화를 주지 않고 컨테이너를 가득 채운다.
+
+# 04 - Navbar
+
+## background-color: transparent;
+
+평소에 배경색을 투명하게 하기 위해 rgba(255, 255, 255, 0)을 사용했는데, 그럴 필요 없이 transparent라는 값을 사용하면 된다.
+
+## height 변경에 애니메이션 넣기
+
+height: auto로 설정하면, 애니메이션이 일어나지 않는 것 같다. 그래서, 고정된 높이로 변화를 주면, 애니메이션이 일어나게 되는데, 문제가 있다. 처음에 auto로 설정하려 했던 이유는, 내용물의 높이만큼 자연스럽게 높이가 늘어나기를 원했기 때문이다. 근데 고정된 높이를 설정하면 정확한 높이를 설정해주기 힘들고, 나중에 유지보수하기도 쉽지 않을 것이다. 그래서 찾아보니, max-height를 이용한 방법을 찾았다.
+
+```css
+.links {
+  max-height: 500px;
+  transition: max-height 300ms;
+}
+
+.links.hide {
+  max-height: 0;
+}
+```
+
+max-height를 내용물의 높이보다 크게 설정한다면, active상태일때 내용물에 높이에 맞춘 높이로 설정된다.  
+출처: https://stackoverflow.com/questions/3508605/how-can-i-transition-height-0-to-height-auto-using-css
