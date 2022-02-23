@@ -1,0 +1,128 @@
+:root {
+  --color-theme: #49a6e9;
+  --color-body: hsl(210, 36%, 96%);
+  --shadow-medium: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-body);
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-toggle-btn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  padding: 0px 4px;
+  border: none;
+  font-size: 2em;
+  color: var(--color-theme);
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 300ms;
+}
+
+.sidebar {
+  position: relative;
+  width: 400px;
+  height: 100vh;
+  left: -400px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  transition: all 500ms linear;
+}
+
+.sidebar.active {
+  transform: translateX(100%);
+}
+
+.sidebar-header {
+  padding: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-header .logo {
+  height: 35px;
+}
+
+.sidebar-header .close-sidebar-btn {
+  padding: 0px 4px;
+  border: none;
+  font-size: 2em;
+  color: rgb(175, 0, 0);
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 300ms linear;
+}
+
+.sidebar-header .close-sidebar-btn:hover {
+  color: rgb(200, 0, 0);
+  transform: rotate(360deg);
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.links a {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  font-size: 1.2em;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  color: #7ea1bb;
+  transition: all 300ms;
+}
+
+.links a:hover {
+  padding-left: 25px;
+  color: var(--color-theme);
+  background-color: #a3d1f1;
+}
+
+.link-icons {
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link-icons i {
+  margin: 0 8px;
+  font-size: 1.3em;
+  color: var(--color-theme);
+  cursor: pointer;
+  transition: all 300ms;
+}
+
+.link-icons i:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    left: -100%;
+    width: 100%;
+    z-index: 1;
+  }
+}
