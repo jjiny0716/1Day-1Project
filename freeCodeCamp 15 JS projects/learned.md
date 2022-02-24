@@ -82,3 +82,7 @@ height: auto로 설정하면, 애니메이션이 일어나지 않는 것 같다.
 
 max-height를 내용물의 높이보다 크게 설정한다면, active상태일때 내용물에 높이에 맞춘 높이로 설정된다.  
 출처: https://stackoverflow.com/questions/3508605/how-can-i-transition-height-0-to-height-auto-using-css
+
+## 프로젝트 중단
+
+몇일 하면서 느낀점이, 프로젝트들이 자바스크립트가 차지하는 비율이 적고, 그마저도 너무 쉽다고 느꼈다... 조금더 도전적인 내용으로 프로젝트를 하는게 좋을 것 같다. 새로운 프로젝트 아이디어들을 찾아보자.
