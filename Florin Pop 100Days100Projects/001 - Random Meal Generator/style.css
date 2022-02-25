@@ -1,0 +1,72 @@
+:root {
+  --color-skyblue: #33c3f0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header .title {
+  margin-bottom: 0;
+}
+
+.header .desc {
+  font-size: 1.3em;
+}
+
+.header .random-meal-generator-btn {
+  padding: 10px 30px;
+  border: none;
+  border-radius: 5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: white;
+  background-color: var(--color-skyblue);
+  cursor: pointer;
+}
+
+.header .random-meal-generator-btn:hover {
+  background-color: #3cb1d4;
+}
+
+.main {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.text-info-container {
+  display: flex;
+}
+
+.sub-info {
+  margin-right: 30px;
+}
+
+.sub-info img {
+  width: 400px;
+}
+
+.ingredients {
+  padding: 0;
+  list-style: circle inside;
+}
+
+.main-info h2 {
+  margin: 0 0 20px 0;
+}
