@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://kit.fontawesome.com/f01c5161f3.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Dongle&family=Noto+Sans+KR:wght@300&family=Open+Sans:wght@700&family=Roboto:wght@400&family=Source+Sans+Pro:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script src="./main.js" defer></script>
+    <title>Mood Calendar</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1 class="title">2019 Mood Calendar</h1>
+        <p class="desc">~ color each day depending on what your mood was / is ~</p>
+      </header>
+      <main>
+        <div class="desc-and-moods-container">
+          <p class="desc">Select mood:</p>
+          <ul class="mood-btns">
+            <li>
+              <button class="mood happy" data-mood="happy"><i class="far fa-laugh happy"></i></button>
+            </li>
+            <li>
+              <button class="mood pretty-good" data-mood="pretty-good"><i class="far fa-smile pretty-good"></i></button>
+            </li>
+            <li>
+              <button class="mood soso" data-mood="soso"><i class="far fa-meh soso"></i></button>
+            </li>
+            <li>
+              <button class="mood not-good" data-mood="not-good"><i class="far fa-frown not-good"></i></button>
+            </li>
+            <li>
+              <button class="mood sad" data-mood="sad"><i class="far fa-sad-tear sad"></i></button>
+            </li>
+          </ul>
+          <p class="desc">then click on the circles below</p>
+        </div>
+        <div class="calendar"></div>
+      </main>
+    </div>
+    <button class="randomize-btn"><i class="fas fa-random"></i></button>
+    <button class="clear-btn"><i class="fas fa-sync"></i></button>
+  </body>
+</html>

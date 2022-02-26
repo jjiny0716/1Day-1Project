@@ -1,0 +1,205 @@
+:root {
+  --color-green: #2d6b5f;
+  --color-light-green: #84e7b1;
+  --color-lime: #e2f5cd;
+  --color-light-brown: #edbf98;
+  --color-red: #f07570;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header .title {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.desc {
+  margin: 5px;
+}
+
+.desc-and-moods-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.desc-and-moods-container .mood-btns {
+  display: flex;
+}
+
+.desc-and-moods-container .mood-btns li {
+  margin: 0 8px;
+}
+
+.desc-and-moods-container .mood-btns .mood {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  font-size: 2em;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.mood.happy {
+  color: var(--color-green);
+}
+
+.mood.pretty-good {
+  color: var(--color-light-green);
+}
+
+.mood.soso {
+  color: var(--color-lime);
+}
+
+.mood.not-good {
+  color: var(--color-light-brown);
+}
+
+.mood.sad {
+  color: var(--color-red);
+}
+
+.desc-and-moods-container .mood-btns .mood.selected {
+  background-color: currentColor;
+}
+
+.mood.selected i {
+  color: white;
+}
+
+.calendar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.month {
+  width: 300px;
+  margin: 20px 10px;
+}
+
+.month .month-name {
+  margin: 0 0 5px 0;
+  text-align: center;
+}
+
+.month .week-days-container {
+  margin-bottom: 4px;
+  display: flex;
+}
+
+.month .week-days-container .week-day {
+  width: calc(100% / 7);
+  text-align: center;
+}
+
+.month .days-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.month .days-container .day {
+  width: calc(100% / 7);
+  margin-bottom: 5px;
+  font-size: 0.7em;
+  text-align: center;
+  color: white;
+}
+
+.month .days-container .day .circle-background {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #888;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.month .days-container .day .circle-background:hover {
+  transform: scale(1.1);
+}
+
+.month .days-container .day .circle-background.happy {
+  background-color: var(--color-green);
+}
+
+.month .days-container .day .circle-background.pretty-good {
+  background-color: var(--color-light-green);
+}
+
+.month .days-container .day .circle-background.soso {
+  background-color: var(--color-lime);
+}
+
+.month .days-container .day .circle-background.not-good {
+  background-color: var(--color-light-brown);
+}
+
+.month .days-container .day .circle-background.sad {
+  background-color: var(--color-red);
+}
+
+.randomize-btn {
+  position: fixed;
+  top: 50px;
+  right: 0;
+  padding: 6px 12px;
+  border: none;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  color: white;
+  background-color: var(--color-light-green);
+  cursor: pointer;
+}
+
+.clear-btn {
+  position: fixed;
+  top: 85px;
+  right: 0;
+  padding: 6px 12px;
+  border: none;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  color: white;
+  background-color: #999;
+  cursor: pointer;
+}
