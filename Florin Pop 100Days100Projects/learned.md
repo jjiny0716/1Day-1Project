@@ -73,3 +73,20 @@ https://editor.p5js.org/ada10086/sketches/r1gmVaE07
 2. Particle뒤에 잔상 효과를 주고싶어서 공이 움직일때마다 잔상을 나타내는 object를 생성했더니, Particle의 갯수를 늘릴때마다 프레임이 크게 감소한다. => 잘 모르겠다.. 라이브러리가 어떻게 잔상을 생성하는지 공부해봐야 할까?
 
 그래도 재밌었다.
+
+## 004 - Aim Trainer
+
+## this 바인딩
+
+여러 클래스와 모듈을 이용해봤는데, this를 이용하는 부분에서 this가 undefined라는 오류가 나왔다. 콜백함수를 전달하는 부분이었는데, this바인딩을 이용해서 문제를 해결할 수 있었다(화살표 함수와 bind()를 이용했다). this가 undefined라면, this바인딩을 잊은 걸로 생각하면 될 것 같다.
+
+## 이벤트리스너 제거
+
+게임이 끝났을 때, 게임에 등록했던 이벤트리스너들을 제거해야 했다. 아래는 이벤트리스너를 제거하기 위한 코드이다.
+
+```js
+removeEventListener("click", myDivEventHandler);
+```
+
+그런데, 내 경우엔 분명 인자를 똑같이 전달했는데도 이벤트 해제가 되지 않았다. 찾아보니, eventListener를 등록할때 bind()를 이용했다면, 새로운 레퍼런스가 생성된다고 한다. bind()를 이용하는 경우에는 bind()를 이용한 함수를 따로 저장해두고, 저장해둔 것으로 이벤트리스너를 해제하도록 하자.  
+출처: https://stackoverflow.com/questions/11565471/removing-event-listener-which-was-added-with-bind

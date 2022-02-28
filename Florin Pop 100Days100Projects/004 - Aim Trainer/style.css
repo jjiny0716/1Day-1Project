@@ -1,0 +1,98 @@
+:root {
+  --color-theme: #ff5722;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: #f6f6f6;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.header .title {
+  font-size: 2.5em;
+}
+
+.game {
+  width: 1000px;
+  margin: 0 auto;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-header {
+  width: 100%;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.game-header span {
+  font-size: 1.1em;
+}
+
+.game-header .stat-value {
+  color: var(--color-theme);
+  margin-right: 15px;
+}
+
+.game-header .life {
+  display: flex;
+  justify-content: center;
+}
+
+.game-header .life .heart {
+  font-size: 1.4em;
+  margin: 0 3px;
+  color: var(--color-theme);
+}
+
+.game-header .life .heart.used {
+  color: #777;
+}
+
+canvas {
+  border: 1px solid black;
+}
+
+.leader-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top-10-results .result {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.top-10-results .rank {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--color-theme);
+  margin-right: 10px;
+}
+
+.top-10-results .rank-stat-value {
+  margin-right: 15px;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script/App.mjs" type="module" defer></script>
+    <title>Aim Trainer</title>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="title">Aim Trainer</h1>
+    </header>
+    <div class="game">
+      <header class="game-header">
+        <div class="stats"></div>
+        <div class="life"></div>
+      </header>
+      <canvas width="1000" height="600" id="canvas"></canvas>
+    </div>
+    <div class="leader-board">
+      <h3 class="leader-board-title">Top 10 results</h3>
+      <ul class="top-10-results">
+        <li class="result">
+          <span class="rank">1</span>
+          Hits: <span class="rank-stat-value">109</span> Time: <span class="rank-stat-value">00:53:3</span> Accuracy: <span class="rank-stat-value">97.4%</span>
+        </li>
+        <li class="result">
+          <span class="rank">2</span>
+          Hits: <span class="rank-stat-value">109</span> Time: <span class="rank-stat-value">00:53:3</span> Accuracy: <span class="rank-stat-value">97.4%</span>
+        </li>
+        <li class="result">
+          <span class="rank">3</span>
+          Hits: <span class="rank-stat-value">109</span> Time: <span class="rank-stat-value">00:53:3</span> Accuracy: <span class="rank-stat-value">97.4%</span>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
