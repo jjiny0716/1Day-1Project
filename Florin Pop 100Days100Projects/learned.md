@@ -74,7 +74,7 @@ https://editor.p5js.org/ada10086/sketches/r1gmVaE07
 
 그래도 재밌었다.
 
-## 004 - Aim Trainer
+# 004 - Aim Trainer
 
 ## this 바인딩
 
@@ -90,3 +90,13 @@ removeEventListener("click", myDivEventHandler);
 
 그런데, 내 경우엔 분명 인자를 똑같이 전달했는데도 이벤트 해제가 되지 않았다. 찾아보니, eventListener를 등록할때 bind()를 이용했다면, 새로운 레퍼런스가 생성된다고 한다. bind()를 이용하는 경우에는 bind()를 이용한 함수를 따로 저장해두고, 저장해둔 것으로 이벤트리스너를 해제하도록 하자.  
 출처: https://stackoverflow.com/questions/11565471/removing-event-listener-which-was-added-with-bind
+
+# 005 - User Prifile Design
+
+## css 함수속 콤마
+
+css에서, 값을 나열할 때 어떨땐 콤마를 쓰고 어떨땐 쓰지않아서, 헷갈릴 때가 있었다. 오늘도 실수를 했는데, 찾아보니 font, margin처럼 한 속성에 여러 값을 나열할 때는 콤마를 안쓰고, rgba()같은 함수속 여러개의 값을 나열할 때는 콤마를 쓰는 것 같다.
+
+## 박스 겹치기
+
+여러 태그를 겹치게 하기 위해서, 다양한 방법을 시도해봤다. absolute를 쓰면, 원래 공간을 차지하지 않고, relative를 쓰면, 원래 공간을 차지하면서 이동시킬 수 있다. position을 따로 선언하기 싫다면, 마진에 음수를 주어 이동시킬 수도 있다(패딩은 안되는듯).
