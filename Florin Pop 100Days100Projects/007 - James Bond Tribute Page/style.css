@@ -1,0 +1,278 @@
+:root {
+  --color-background: #eeeeee;
+  --color-box-background-gray: #c0c0c0;
+  --color-box-background-white: #ffffff;
+  --color-background-number-color: #e6e6e6;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-background);
+  cursor: crosshair;
+}
+
+main {
+  width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1,
+h2 {
+  font-family: "Holtwood One SC", serif;
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.row-header,
+.row,
+.row-footer {
+  display: flex;
+}
+
+.box {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  padding: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.row-header .box {
+  height: 250px;
+}
+
+.row-footer .box {
+  height: 200px;
+}
+
+.box.gray {
+  background-color: var(--color-box-background-gray);
+}
+
+.box.white {
+  background-color: var(--color-box-background-white);
+}
+
+/* background image */
+.box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+  filter: grayscale();
+}
+
+.box:first-of-type {
+  text-align: right;
+}
+
+.box:first-of-type .actor-name {
+  right: 10px;
+}
+
+.box:last-of-type .actor-name {
+  left: 10px;
+}
+
+.title {
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  font-size: 60px;
+  text-transform: uppercase;
+}
+
+.title-left {
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  font-size: 60px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.title-left .hidden {
+  display: none;
+}
+
+.title-small {
+  position: absolute;
+  right: 0;
+  bottom: 25px;
+  transform: translateX(50%);
+  font-size: 30px;
+  font-family: "Lora", serif;
+  font-weight: 100;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.row-footer .title-small {
+  top: 50px;
+}
+
+.actor-name {
+  position: absolute;
+  bottom: -35px;
+  font-size: 48px;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.actor-name.white {
+  position: absolute;
+  bottom: -35px;
+  font-size: 48px;
+  color: white;
+}
+
+.actor-name .hidden {
+  display: none;
+}
+
+.movies {
+  width: 100%;
+  font-size: 20px;
+  font-family: "Lora", serif;
+  line-height: 21px;
+  z-index: 1;
+}
+
+.movies p {
+  margin: 0;
+}
+
+.movies .movie {
+  margin: 12px 0;
+}
+
+.background-number {
+  position: absolute;
+  top: 250px;
+  left: 250px;
+  transform: translate(-50%, -50%);
+  font-size: 300px;
+  font-family: "Lora", serif;
+  color: var(--color-background-number-color);
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 1000px) {
+  main {
+    width: 500px;
+  }
+
+  .row-header,
+  .row,
+  .row-footer {
+    flex-direction: column;
+  }
+
+  .box {
+    text-align: center;
+  }
+
+  .box:first-of-type {
+    text-align: center;
+  }
+
+  .box.white {
+    height: auto;
+  }
+
+  .row-header .box {
+    height: 100px;
+  }
+
+  .row-header .title-left {
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 36px;
+  }
+
+  .row-header .title-left .hidden {
+    display: inline;
+  }
+
+  .row-header .title-small {
+    width: 100%;
+    transform: none;
+    top: 100px;
+  }
+
+  .row-header .box.white .title {
+    display: none;
+  }
+
+  .row-footer .box {
+    padding: 0;
+    height: 40px;
+  }
+
+  .row .box {
+    overflow: hidden;
+  }
+
+  .row .box.gray {
+    order: 1;
+  }
+
+  .row .box.white {
+    order: 2;
+  }
+
+  .row .box.white .actor-name {
+    display: none;
+  }
+
+  .row .box.gray {
+    height: 300px;
+  }
+
+  .row .box.gray img {
+    height: 500px;
+    object-fit: cover;
+  }
+
+  .row .box.gray .actor-name {
+    font-size: 36px;
+    width: 100%;
+    left: 250px;
+    transform: translateX(-50%);
+  }
+
+  .actor-name .hidden {
+    display: inline;
+  }
+
+  .background-number {
+    top: 0;
+    transform: translate(-50%, 0);
+    height: 100%;
+  }
+
+  .row-footer .title-small {
+    width: 100%;
+    transform: none;
+    top: -5px;
+  }
+}
