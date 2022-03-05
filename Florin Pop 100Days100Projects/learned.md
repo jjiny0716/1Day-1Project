@@ -121,5 +121,40 @@ absolute인 요소를 가운데 정렬해야 할때, absolute는 flex를 이용�
 
 ## 클립보드 api
 
-생성한 비밀번호를 클립보드에 복사하는 버튼을 구현하기 위해, 클립보드 api를 사용했다. 클립보드 api는 클립보드 명령에 응답하거나, 시스템 클립보드에 쓰기 기능을 제공한다. https://developer.mozilla.org/ko/docs/Web/API/Clipboard_API
+생성한 비밀번호를 클립보드에 복사하는 버튼을 구현하기 위해, 클립보드 api를 사용했다. 클립보드 api는 클립보드 명령에 응답하거나, 시스템 클립보드에 쓰기 기능을 제공한다. 출처: [MDN문서](https://developer.mozilla.org/ko/docs/Web/API/Clipboard_API)
 
+# 014 - Contact Page Design
+
+## textarea
+
+input type="text"를 이용하니, height가 높을 때 입력이 세로기준 가운데로 정렬이 되었다. 이러한 형태를 기대한게 아니라, 왼쪽 위부터 입력이 시작되기를 원했다. 그럴땐 textarea를 사용하자. input type="text"와 상당히 유사하게 작동하나, 왼쪽 위부터 입력이 시작된다는 차이점이 있다. 또 오른쪽 아래에 textarea의 크기를 바꿀 수 있는 집게? 같은 것이 생기는데, 이를 막고싶다면 아래의 css를 사용하자.
+
+```css
+textarea {
+  resize: none;
+}
+```
+
+## border-radius가 적용된 border에 그라데이션 넣기
+
+기존의 border-image와 border-image-slice를 이용한 방법은, border-radius와 호환되지 않는다. 그래서 background를 이용한 우회적인 방법을 사용해야 한다. 아래는 내가 사용했던 코드이다.
+
+```css
+.somediv {
+  /* border색을 투명하게 해야함. */
+  border: 1px solid transparent;
+  border-radius: 10px;
+  /* 안쪽(content-box 혹은 padding-box)에 적용될 gradient, border에 적용될 gradient */
+  background-image: linear-gradient(#fff, #fff), linear-gradient(to right, #ed73c8, #ff6b96);
+  /* background-image가 border부터 시작하게. */
+  background-origin: border-box;
+  /* padding-box에 background-image 1번, border-box에 background-image 2번 */
+  background-clip: padding-box, border-box;
+}
+```
+
+출처: [dltjsgho.log](https://velog.io/@dltjsgho/css-border%EC%97%90-%EA%B7%B8%EB%9D%BC%EB%8D%B0%EC%9D%B4%EC%85%98-%EB%84%A3%EA%B8%B0)
+
+## form validation
+
+폼에서 특정 요소는 무조건 있어야하고, 이메일은 형식을 갖춰야해서, 사용자가 잘못된 입력을 했으면 사용자에게 피드백을 주는 요소를 자바스크립트로 구현하지 않아도 사용할 수 있다. HTML에서 기본적으로 제공하는 built-in form validation이라는 것이 있다. 폼 요소에 required를 추가하면, 사용자가 해당 폼 요소를 비웠을 때 피드백이 제공된다. 이외에도 길이나 특정 형식, 특정 패턴으로 입력을 강제할 수 있으므로, 유용하게 사용할 수 있다. 다만 커스터마이징이 필요하다면, css와 js로 추가적인 처리가 필요하겠다. 출처: [MDN문서](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
