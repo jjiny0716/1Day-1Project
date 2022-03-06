@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./main.js" defer></script>
+    <title>Typing Speed Test</title>
+  </head>
+  <body>
+    <main>
+      <div class="welcome-modal">
+        <h1>Welcome to the Typing game</h1>
+        <p>
+          <strong>Rules:</strong><br />
+          Type in the input field the highlighted word.<br />
+          The correct words will turn <span class="green">green</span>.<br />
+          Incorrect letters will turn <span class="red-background">red</span>.<br />
+          <br />
+          Have fun! 😃
+        </p>
+        <button class="start-btn">Start game</button>
+      </div>
+      <div class="tester-container invisible">
+        <div class="infos">
+          <div class="wpm">WPM: <span class="value">0</span></div>
+          <div class="time">Time: <span class="value">0</span></div>
+        </div>
+        <div class="tester">
+          <h2 class="title">Type the text below</h2>
+          <progress max="100" value="0" class="progress"></progress>
+          <p class="text"></p>
+          <input type="text" class="word-input" />
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

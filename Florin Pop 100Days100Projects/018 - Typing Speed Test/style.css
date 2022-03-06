@@ -1,0 +1,117 @@
+:root {
+  --shadow-medium: 0 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.invisible {
+  display: none !important;
+}
+
+.green {
+  color: green;
+}
+
+.red-background {
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+.welcome-modal {
+  padding: 25px;
+  border: 2px solid black;
+  font-size: 1.3em;
+  box-shadow: var(--shadow-medium);
+  text-align: center;
+}
+
+.welcome-modal p {
+  line-height: 1.4em;
+}
+
+.welcome-modal .start-btn {
+  padding: 15px 20px;
+  border: none;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+
+.tester-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.tester-container .infos {
+  margin-bottom: 3px;
+  display: flex;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.tester-container .infos .value {
+  margin-right: 1em;
+  font-size: 0.9em;
+  line-height: 1.1rem;
+  font-weight: 400;
+}
+
+.tester-container .tester {
+  width: 700px;
+  padding: 25px;
+  border: 2px solid black;
+  box-shadow: var(--shadow-medium);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tester .title {
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.tester .progress {
+  width: 100%;
+  height: 20px;
+  margin: 0 0 10px 0;
+}
+
+.tester .text {
+  font-size: 1.1em;
+  line-height: 1.8em;
+}
+
+.tester .text .word.underline {
+  /* text-decoration: underline; */
+  border-bottom: 1px solid black;
+}
+
+.tester .word-input {
+  width: 50%;
+  height: 40px;
+  padding: 10px;
+  font-size: 1.2em;
+}

@@ -158,3 +158,10 @@ textarea {
 ## form validation
 
 폼에서 특정 요소는 무조건 있어야하고, 이메일은 형식을 갖춰야해서, 사용자가 잘못된 입력을 했으면 사용자에게 피드백을 주는 요소를 자바스크립트로 구현하지 않아도 사용할 수 있다. HTML에서 기본적으로 제공하는 built-in form validation이라는 것이 있다. 폼 요소에 required를 추가하면, 사용자가 해당 폼 요소를 비웠을 때 피드백이 제공된다. 이외에도 길이나 특정 형식, 특정 패턴으로 입력을 강제할 수 있으므로, 유용하게 사용할 수 있다. 다만 커스터마이징이 필요하다면, css와 js로 추가적인 처리가 필요하겠다. 출처: [MDN문서](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
+
+# 018 - Typing Speed Test
+
+## childNodes vs children
+
+childNodes를 사용해 span의 색과 배경색을 바꾸는 로직을 처리했는데, 오류가 발생했다. word를 계속해서 올바르게 입력해도, 마치 두 로직의 속도가 다른 듯이, 현재 입력중인 word에 이펙트가 표시되지 않고, 이전에 진작 입력이 끝난 word에 이펙트가 표시되고 있었다. 확인해보니, childNodes가 span과 그 사이에 공백까지 제공해주고 있었기 때문에 발생한 오류였다. childNodes를 children으로 변경하니 해결되었다. 왜 이런 현상이 발생했을까?  
+childNodes는 자식 node들을 가져오는데, 이 node에는 text node도 포함된다. children은, 자식 element들을 가져온다. 여기엔 text node가 포함되지 않으므로, 대부분의 경우에는 children을 사용하고, text node의 변경이 필요하면, textContent를 같이 사용하는 것이 좋아보인다. childNodes를 사용하면, 의도치 않은 text node를 같이 얻게될 수 있기 때문에, 오류의 원인이 될 수 있겠다.
