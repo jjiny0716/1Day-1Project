@@ -8,12 +8,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./style.css" />
-    <script src="./main.js" defer></script>
+    <script src="./scripts/main.mjs" type="module" defer></script>
     <title>Typing Speed Test</title>
   </head>
   <body>
     <main>
-      <div class="welcome-modal">
+      <div class="welcome-modal invisible">
         <h1>Welcome to the Typing game</h1>
         <p>
           <strong>Rules:</strong><br />
@@ -23,17 +23,24 @@
           <br />
           Have fun! 😃
         </p>
+        <div class="language-checkboxes">
+          <label for="korean">korean:</label>
+          <input type="checkbox" name="korean" id="korean" checked />
+          <label for="english">english:</label>
+          <input type="checkbox" name="english" id="english" checked />
+        </div>
         <button class="start-btn">Start game</button>
       </div>
-      <div class="tester-container invisible">
-        <div class="infos">
+      <div class="game-container invisible">
+        <div class="stats">
           <div class="wpm">WPM: <span class="value">0</span></div>
           <div class="time">Time: <span class="value">0</span></div>
+          <div class="accuracy">Accuracy: <span class="value">0%</span></div>
         </div>
-        <div class="tester">
+        <div class="game">
           <h2 class="title">Type the text below</h2>
           <progress max="100" value="0" class="progress"></progress>
-          <p class="text"></p>
+          <p class="text-area"></p>
           <input type="text" class="word-input" />
         </div>
       </div>

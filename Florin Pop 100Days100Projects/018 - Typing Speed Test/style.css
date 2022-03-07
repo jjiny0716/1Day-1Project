@@ -51,6 +51,14 @@ main {
   line-height: 1.4em;
 }
 
+.welcome-modal .language-checkboxes {
+  margin-bottom: 10px;
+}
+
+.welcome-modal .language-checkboxes input {
+  margin-right: 20px;
+}
+
 .welcome-modal .start-btn {
   padding: 15px 20px;
   border: none;
@@ -59,26 +67,26 @@ main {
   cursor: pointer;
 }
 
-.tester-container {
+.game-container {
   display: flex;
   flex-direction: column;
 }
 
-.tester-container .infos {
+.game-container .stats {
   margin-bottom: 3px;
   display: flex;
   font-size: 1.3rem;
   font-weight: bold;
 }
 
-.tester-container .infos .value {
+.game-container .stats .value {
   margin-right: 1em;
   font-size: 0.9em;
   line-height: 1.1rem;
   font-weight: 400;
 }
 
-.tester-container .tester {
+.game-container .game {
   width: 700px;
   padding: 25px;
   border: 2px solid black;
@@ -88,28 +96,28 @@ main {
   align-items: center;
 }
 
-.tester .title {
+.game .title {
   margin: 0 0 10px 0;
   text-align: center;
 }
 
-.tester .progress {
+.game .progress {
   width: 100%;
   height: 20px;
   margin: 0 0 10px 0;
 }
 
-.tester .text {
+.game .text-area {
   font-size: 1.1em;
   line-height: 1.8em;
 }
 
-.tester .text .word.underline {
+.game .text-area .word.underline {
   /* text-decoration: underline; */
   border-bottom: 1px solid black;
 }
 
-.tester .word-input {
+.game .word-input {
   width: 50%;
   height: 40px;
   padding: 10px;
