@@ -165,3 +165,10 @@ textarea {
 
 childNodes를 사용해 span의 색과 배경색을 바꾸는 로직을 처리했는데, 오류가 발생했다. word를 계속해서 올바르게 입력해도, 마치 두 로직의 속도가 다른 듯이, 현재 입력중인 word에 이펙트가 표시되지 않고, 이전에 진작 입력이 끝난 word에 이펙트가 표시되고 있었다. 확인해보니, childNodes가 span과 그 사이에 공백까지 제공해주고 있었기 때문에 발생한 오류였다. childNodes를 children으로 변경하니 해결되었다. 왜 이런 현상이 발생했을까?  
 childNodes는 자식 node들을 가져오는데, 이 node에는 text node도 포함된다. children은, 자식 element들을 가져온다. 여기엔 text node가 포함되지 않으므로, 대부분의 경우에는 children을 사용하고, text node의 변경이 필요하면, textContent를 같이 사용하는 것이 좋아보인다. childNodes를 사용하면, 의도치 않은 text node를 같이 얻게될 수 있기 때문에, 오류의 원인이 될 수 있겠다.
+
+# 019 - Send Love Button
+
+## 새로 추가한 element에 애니메이션 효과 주기
+
+버튼을 누르면, 랜덤한 위치, 크기, 속도를 가진 하트들이 나타나 하늘로 날아가는 효과를 구현해야 했다. 다른건 다 쉽게 할 수 있었으나, 정작 제일 중요한 애니메이션 효과가 작동하지 않았다. 처음에 내가 시도했던 방법은, css에 미리 클래스 선택자와 함께 transform을 써두고, Element를 container에 추가한 후, Element에 해당 클래스를 추가해주는 방식이었다. 구글링해본 결과, 클래스를 추가하는 동작에 setTimeout을 이용해 딜레이를 줘야 작동한다는 사실을 알게되었다.  
+문제를 해결했으나, 왜 이렇게 동작하는지 궁금했다. 이유는 style change event가 정확히 언제 동작하는지 명확하지 않기 때문에, 값에 영향을 주는 동시에 작동되고 있는 다른 요소들과의 순서가 명확하지 않기 때문인 것 같다. 그래서 setTimeout을 이용해, style change event를 제일 마지막에 발생시키도록 해야하는 것 같다. 출처: [dev.jinyongp](https://velog.io/@jinyongp/%EC%83%88%EB%A1%9C-%EC%83%9D%EC%84%B1%ED%95%9C-element%EB%A5%BC-appendChild%ED%95%9C-%ED%9B%84-%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98-%EC%B6%94%EA%B0%80%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95%EC%9D%80)

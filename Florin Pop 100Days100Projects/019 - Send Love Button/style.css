@@ -1,0 +1,96 @@
+:root {
+  --color-background: #f1f1f1;
+  --color-red: #e7273f;
+  --shadow-small: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "Fredoka", sans-serif;
+  background-color: var(--color-background);
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.love-btn {
+  width: 360px;
+  /* height: 75px; */
+  padding: 0;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.3em;
+  background-color: var(--color-red);
+  box-shadow: var(--shadow-small);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.love-btn:active {
+  background-color: white;
+}
+
+.love-btn .heart-container {
+  position: relative;
+  padding: 25px;
+  border-right: 1px solid #ddd;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  color: var(--color-red);
+  background-color: white;
+}
+
+.love-btn .heart-container .flying-heart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 4s linear;
+}
+
+.love-btn .heart-container .flying-heart.active {
+  transform: translateY(-75px);
+}
+
+.love-btn .text {
+  margin: 0 auto;
+  text-transform: uppercase;
+  color: white;
+}
+
+.love-btn:active .text {
+  display: none;
+}
+
+.love-btn .active-text {
+  display: none;
+  margin: 0 auto;
+  font-size: 0.65em;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+.love-btn .active-text .name {
+  font-size: 1.5em;
+  color: var(--color-red);
+}
+
+.love-btn:active .active-text {
+  display: block;
+}
