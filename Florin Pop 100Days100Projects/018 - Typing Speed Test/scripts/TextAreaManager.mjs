@@ -1,4 +1,4 @@
-import {random} from './utils.mjs';
+import { random } from "./utils.mjs";
 
 export default class TextAreaManager {
   constructor() {
@@ -19,7 +19,7 @@ export default class TextAreaManager {
 
   settingRandomText() {
     let index = random(0, this.textData.length);
-    if ([...Object.values(this.language)].every(value => !value)) index = 0;
+    if ([...Object.values(this.language)].every((value) => !value)) index = 0;
     else {
       while (!this.language[this.textData[index].type.toLowerCase()]) {
         index = random(0, this.textData.length);
@@ -29,8 +29,8 @@ export default class TextAreaManager {
   }
 
   transformWords(text) {
-    this.words = text.split(' ');
-    return this.words.map((word) => `<span class="word">${word}</span>`).join(' ');
+    this.words = text.split(" ");
+    return this.words.map((word) => `<span class="word">${word.split("").map((char) => `<span class="char">${char}</span>`).join('')}</span>`).join(" ");
   }
 
   isCorrectWord(inputWord) {
@@ -38,15 +38,26 @@ export default class TextAreaManager {
     return false;
   }
 
-  moveToNextWord() {
+  moveToNextWord(inputWord) {
+    this.commit(inputWord.slice(0, inputWord.length - 1));
     this.removeTextUnderline(this.wordIndex);
     this.wordIndex += 1;
     if (!this.isFinished()) this.setTextUnderline(this.wordIndex);
   }
 
+  commit(inputWord) {
+    const isSameWord = this.words[this.wordIndex] === inputWord;
+    for (let i = 0 ; i < this.words[this.wordIndex].length ; i++) {
+      isSameWord ? this.setCharGreen(this.wordIndex, i) : this.setCharRed(this.wordIndex, i);
+    }
+  }
+
   matchWord(inputWord) {
-    if (this.words[this.wordIndex] !== inputWord) this.setTextRedBackground(this.wordIndex);
-    else this.setTextGreen(this.wordIndex);
+    for (let i = 0 ; i < this.words[this.wordIndex].length ; i++) {
+      if (inputWord[i] === undefined) this.removeCharEffect(this.wordIndex, i);
+      else if (this.words[this.wordIndex][i] !== inputWord[i]) this.setCharRedBackground(this.wordIndex, i);
+      else this.setCharGreen(this.wordIndex, i);
+    }
   }
 
   setTextUnderline(index) {
@@ -59,16 +70,27 @@ export default class TextAreaManager {
     wordNode.classList.remove("underline");
   }
 
-  setTextGreen(index) {
-    const wordNode = this.textArea.children[index];
-    wordNode.classList.remove("red-background");
-    wordNode.classList.add("green");
+  setCharGreen(wordIndex, charIndex) {
+    const charNode = this.textArea.children[wordIndex].children[charIndex];
+    this.removeCharEffect(wordIndex, charIndex);
+    charNode.classList.add("green");
   }
 
-  setTextRedBackground(index) {
-    const wordNode = this.textArea.children[index];
-    wordNode.classList.remove("green");
-    wordNode.classList.add("red-background");
+  setCharRed(wordIndex, charIndex) {
+    const charNode = this.textArea.children[wordIndex].children[charIndex];
+    this.removeCharEffect(wordIndex, charIndex);
+    charNode.classList.add("red");
+  }
+
+  setCharRedBackground(wordIndex, charIndex) {
+    const charNode = this.textArea.children[wordIndex].children[charIndex];
+    this.removeCharEffect(wordIndex, charIndex);
+    charNode.classList.add("red-background");
+  }
+
+  removeCharEffect(wordIndex, charIndex) {
+    const charNode = this.textArea.children[wordIndex].children[charIndex];
+    charNode.className = "char";
   }
 
   isFinished() {

@@ -11,9 +11,10 @@ export default class Game {
     this.wordInput = new WordInput();
     this.wordInput.setInputEventListener(this.handleInput.bind(this));
     this.gameContainer = document.querySelector(".game-container");
-    this.successCount = 0;
+    this.firstKeyInputFunc = this.onFirstKeyInput.bind(this);
     this.elapsedTime = 0; // second
     this.timerId = null;
+    this.successCount = 0;
   }
 
   setTextData(textData) {
@@ -33,11 +34,14 @@ export default class Game {
     this.gameContainer.classList.remove("invisible");
     this.textAreaManager.settingRandomText();
     this.textAreaManager.setTextUnderline(0);
-    this.game();
+    this.gameContainer.addEventListener("keydown", this.firstKeyInputFunc);
+    this.wordInput.focus();
+    
   }
 
-  game() {
+  onFirstKeyInput(e) {
     this.timerId = setInterval(this.updateElapsedTime.bind(this), 1000);
+    this.gameContainer.removeEventListener("keydown", this.firstKeyInputFunc);
   }
 
   updateElapsedTime() {
@@ -49,17 +53,17 @@ export default class Game {
   handleInput(e) {
     if (e.data === ' ') {
       if (this.textAreaManager.isCorrectWord(e.target.value)) this.successCount++;
-      this.textAreaManager.moveToNextWord();
+      this.textAreaManager.moveToNextWord(e.target.value);
       this.wordInput.clear();
       this.stats.setWpmValue(Math.floor((this.successCount / this.elapsedTime) * 60));
       this.stats.setAccuracyValue(this.successCount / this.textAreaManager.getCurrentWordIndex() * 100);
       this.progressBar.setProgressValue(Math.floor((this.textAreaManager.getCurrentWordIndex() / this.textAreaManager.getWordsSize()) * 100));
-      if (this.textAreaManager.isFinished()) this.gameEnd();
+      if (this.textAreaManager.isFinished()) this.stop();
     } 
     else this.textAreaManager.matchWord(e.target.value);
   }
 
-  gameEnd() {
+  stop() {
     if (this.timerId) clearInterval(this.timerId);
     this.wordInput.disable();
   }

@@ -13,6 +13,10 @@ fetch("./texts.JSON")
 const welcomeModal = new WelcomeModal();
 welcomeModal.show();
 welcomeModal.addStartGameBtnClickEventListener(() => {
+  if (welcomeModal.isAllLanguageDisabled()) {
+    document.querySelector(".warning").classList.remove("invisible");
+    return;
+  }
   if (game.isReady()) {
     welcomeModal.hide();
     game.setLanguage(welcomeModal.getLanguage());
