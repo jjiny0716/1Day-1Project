@@ -1,8 +1,9 @@
 export default class Stats {
   constructor() {
-    this.wpmText = document.querySelector(".wpm .value");
-    this.timeText = document.querySelector(".time .value");
-    this.accuracyText = document.querySelector(".accuracy .value");
+    this.target = document.querySelector(".game-container .stats");
+    this.wpmText = this.target.querySelector(".wpm .value");
+    this.timeText = this.target.querySelector(".time .value");
+    this.accuracyText = this.target.querySelector(".accuracy .value");
   }
 
   setWpmValue(value) {
@@ -15,5 +16,9 @@ export default class Stats {
 
   setAccuracyValue(value) {
     this.accuracyText.textContent =`${ value.toFixed(1)}%`;
+  }
+
+  clear() {
+    this.wpmText.textContent = this.timeText.textContent = this.accuracyText.textContent = 0;
   }
 }

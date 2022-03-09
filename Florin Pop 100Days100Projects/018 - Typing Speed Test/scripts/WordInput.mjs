@@ -18,4 +18,8 @@ export default class WordInput {
   disable() {
     this.target.setAttribute("readonly", "");
   }
+
+  active() {
+    this.target.removeAttribute("readonly");
+  }
 }

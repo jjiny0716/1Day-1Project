@@ -6,6 +6,10 @@ export default class TextAreaManager {
     this.language = null;
     this.textArea = document.querySelector(".text-area");
     this.words = null;
+    this.init();
+  }
+
+  init() {
     this.wordIndex = 0;
   }
 

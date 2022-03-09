@@ -1,11 +1,11 @@
 import RegesteredEventListener from './RegesteredEventListener.mjs';
+import {LOCAL_STORAGE_LANGUAGE_KEY} from './constants.mjs';
 
 export default class WelcomeModal {
   constructor() {
-    this.LOCAL_STORAGE_LANGUAGE_KEY = "typing_speed_test_language_setting";
     this.target = document.querySelector(".welcome-modal");
-    this.languageCheckboxes = document.querySelector(".language-checkboxes");
-    this.startBtn = document.querySelector(".start-btn");
+    this.languageCheckboxes = this.target.querySelector(".language-checkboxes");
+    this.startBtn = this.target.querySelector(".start-btn");
     this.regesteredEventListeners = [];
     this.languages = {
       "korean": true, 
@@ -22,7 +22,7 @@ export default class WelcomeModal {
   }
 
   restoreLanguageSetting() {
-    this.languages = JSON.parse(localStorage.getItem(this.LOCAL_STORAGE_LANGUAGE_KEY)) || this.languages;
+    this.languages = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LANGUAGE_KEY)) || this.languages;
     for (let key of Object.keys(this.languages)) {
       if (!this.languages[key]) this.languageCheckboxes.querySelector(`[name="${key}"]`).checked = false;
     }
@@ -30,7 +30,7 @@ export default class WelcomeModal {
 
   changeSelectedLanguages(e) {
     this.languages[e.target.name] = e.target.checked;
-    localStorage.setItem(this.LOCAL_STORAGE_LANGUAGE_KEY, JSON.stringify(this.languages));
+    localStorage.setItem(LOCAL_STORAGE_LANGUAGE_KEY, JSON.stringify(this.languages));
   }
 
   isAllLanguageDisabled() {

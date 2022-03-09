@@ -2,6 +2,7 @@ import Stats from './Stats.mjs';
 import ProgressBar from './ProgressBar.mjs';
 import TextAreaManager from './TextAreaManager.mjs';
 import WordInput from './WordInput.mjs';
+import ResultModal from './ResultModal.mjs';
 
 export default class Game {
   constructor() {
@@ -9,12 +10,15 @@ export default class Game {
     this.progressBar = new ProgressBar();
     this.textAreaManager = new TextAreaManager();
     this.wordInput = new WordInput();
+    this.resultModal = new ResultModal();
+    this.resultModal.addReplayBtnClickEventListener(this.start.bind(this));
     this.wordInput.setInputEventListener(this.handleInput.bind(this));
     this.gameContainer = document.querySelector(".game-container");
     this.firstKeyInputFunc = this.onFirstKeyInput.bind(this);
     this.elapsedTime = 0; // second
     this.timerId = null;
     this.successCount = 0;
+    this.isReplay = false;
   }
 
   setTextData(textData) {
@@ -31,12 +35,24 @@ export default class Game {
   }
 
   start() {
+    if (this.isReplay) this.initForReplay();
     this.gameContainer.classList.remove("invisible");
     this.textAreaManager.settingRandomText();
     this.textAreaManager.setTextUnderline(0);
     this.gameContainer.addEventListener("keydown", this.firstKeyInputFunc);
     this.wordInput.focus();
-    
+  }
+
+  initForReplay() {
+    this.elapsedTime = 0; // second
+    this.timerId = null;
+    this.successCount = 0;
+    this.stats.clear();
+    this.progressBar.setProgressValue(0);
+    this.setLanguage(this.resultModal.getLanguage());
+    this.textAreaManager.init();
+    this.wordInput.active();
+    this.resultModal.hide();
   }
 
   onFirstKeyInput(e) {
@@ -66,5 +82,8 @@ export default class Game {
   stop() {
     if (this.timerId) clearInterval(this.timerId);
     this.wordInput.disable();
+    this.resultModal.setStats(Math.floor((this.successCount / this.elapsedTime) * 60), this.elapsedTime, this.successCount / this.textAreaManager.getCurrentWordIndex() * 100);
+    this.resultModal.show();
+    this.isReplay = true;
   }
 }

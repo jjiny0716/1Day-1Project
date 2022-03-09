@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/f01c5161f3.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet" />
@@ -13,6 +14,7 @@
   </head>
   <body>
     <main>
+      <!-- welcome modal -->
       <div class="welcome-modal invisible">
         <h1>Welcome to the Typing game</h1>
         <p>
@@ -32,6 +34,7 @@
         </div>
         <button class="start-btn">Start game</button>
       </div>
+      <!-- game -->
       <div class="game-container invisible">
         <div class="stats">
           <div class="wpm">WPM: <span class="value">0</span></div>
@@ -43,6 +46,24 @@
           <progress max="100" value="0" class="progress"></progress>
           <p class="text-area"></p>
           <input type="text" class="word-input" />
+        </div>
+      </div>
+      <!-- result modal -->
+      <div class="result-modal-container">
+        <div class="result-modal">
+          <h2 class="message">Well done!</h2>
+          <div class="stats">
+            <div class="wpm">WPM: <span class="value">0</span></div>
+            <div class="time">Time: <span class="value">0</span></div>
+            <div class="accuracy">Accuracy: <span class="value">0%</span></div>
+          </div>
+          <div class="language-checkboxes">
+            <label for="korean">korean:</label>
+            <input type="checkbox" name="korean" id="korean" checked />
+            <label for="english">english:</label>
+            <input type="checkbox" name="english" id="english" checked />
+          </div>
+          <button class="replay-btn">Replay<i class="fa-solid fa-rotate-right"></i></button>
         </div>
       </div>
     </main>
