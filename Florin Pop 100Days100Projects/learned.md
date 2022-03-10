@@ -185,6 +185,18 @@ childNodes는 자식 node들을 가져오는데, 이 node에는 text node도 포
 
 원래 flex 아이템들의 순서를 바꾸기 위해 order를 설정했었다. 하지만 모든 아이템들의 순서를 역순으로 바꾸고 싶다면, 무리해서 order를 이용하지 말고, 플렉스 컨테이너의 flex-direction속성의 row-reverse, column-reverse를 이용해보자. 말그대로 row, column에서 아이템을 나열하는 순서를 반대로 바꿔준다. 다만 order을 이용해서 바꾸는 것처럼, DOM 요소의 순서가 바뀌진 않는다.
 
+## 023 - Background Animations
+
+## object-fit 안먹힐 때
+
+object-fit은 크기가 설정되어 있을 때만 작동한다! [스택오버플로우 글](https://stackoverflow.com/questions/34247337/object-fit-not-affecting-images)에서 더 알아보자.
+
+### 리팩토링 목표
+
+1. 추가적인 배경 애니메이션
+2. top, left대신 transform 이용해서 성능 개선
+3. 중복되는 코드 제거
+
 ## 024 - Hover Board
 
 ## css hover 와 mouseover의 순서

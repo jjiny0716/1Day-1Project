@@ -1,0 +1,49 @@
+:root {
+  --color-theme: #23235b;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container .panel {
+  position: absolute;
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  background-image: url("./img/nature-background1.jpg");
+  transition: all 1000ms ease;
+}
+
+.animation-selection-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 15px;
+  border-bottom-left-radius: 8px;
+  text-align: center;
+  color: white;
+  background-color: var(--color-theme);
+  z-index: 1;
+}
+
+.animation-selection-container .title {
+  margin: 5px 0;
+  font-size: 1.1em;
+  font-weight: 500;
+}
