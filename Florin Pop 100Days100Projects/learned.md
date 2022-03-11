@@ -179,13 +179,13 @@ childNodes는 자식 node들을 가져오는데, 이 node에는 text node도 포
 버튼을 누르면, 랜덤한 위치, 크기, 속도를 가진 하트들이 나타나 하늘로 날아가는 효과를 구현해야 했다. 다른건 다 쉽게 할 수 있었으나, 정작 제일 중요한 애니메이션 효과가 작동하지 않았다. 처음에 내가 시도했던 방법은, css에 미리 클래스 선택자와 함께 transform을 써두고, Element를 container에 추가한 후, Element에 해당 클래스를 추가해주는 방식이었다. 구글링해본 결과, 클래스를 추가하는 동작에 setTimeout을 이용해 딜레이를 줘야 작동한다는 사실을 알게되었다.  
 문제를 해결했으나, 왜 이렇게 동작하는지 궁금했다. 이유는 style change event가 정확히 언제 동작하는지 명확하지 않기 때문에, 값에 영향을 주는 동시에 작동되고 있는 다른 요소들과의 순서가 명확하지 않기 때문인 것 같다. 그래서 setTimeout을 이용해, style change event를 제일 마지막에 발생시키도록 해야하는 것 같다. 출처: [dev.jinyongp](https://velog.io/@jinyongp/%EC%83%88%EB%A1%9C-%EC%83%9D%EC%84%B1%ED%95%9C-element%EB%A5%BC-appendChild%ED%95%9C-%ED%9B%84-%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98-%EC%B6%94%EA%B0%80%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95%EC%9D%80)
 
-## 022 - Tricky Cookie
+# 022 - Tricky Cookie
 
 ## flex 아이템들의 순서
 
 원래 flex 아이템들의 순서를 바꾸기 위해 order를 설정했었다. 하지만 모든 아이템들의 순서를 역순으로 바꾸고 싶다면, 무리해서 order를 이용하지 말고, 플렉스 컨테이너의 flex-direction속성의 row-reverse, column-reverse를 이용해보자. 말그대로 row, column에서 아이템을 나열하는 순서를 반대로 바꿔준다. 다만 order을 이용해서 바꾸는 것처럼, DOM 요소의 순서가 바뀌진 않는다.
 
-## 023 - Background Animations
+# 023 - Background Animations
 
 ## object-fit 안먹힐 때
 
@@ -197,8 +197,24 @@ object-fit은 크기가 설정되어 있을 때만 작동한다! [스택오버�
 2. top, left대신 transform 이용해서 성능 개선
 3. 중복되는 코드 제거
 
-## 024 - Hover Board
+# 024 - Hover Board
 
 ## css hover 와 mouseover의 순서
 
 css hover가 먼저 일어난다. 이를 이용해 hover상태에서 transition-delay를 0으로 만들면 mouseover했을때 색이 즉시 변경되고, mouseleave를 했을땐 hover상태가 아니므로 원래의 transition-delay를 적용받아 색이 천천히 사라지게 된다.
+
+## 025 - Review Design
+
+## hover시 border생성
+
+hover상태일 때 1px의 border가 생성되는 css를 작성했다. 문제는 해당 요소의 크기가 그만큼 커져서, 전체 레이아웃에 영향을 주게 되었다. 이를 막기위해 padding을 원래 값에서 1px적은 값으로 설정하는 방식으로 해결했으나, padding의 값을 수정할 때마다 hover상태의 padding값도 수정해야 해서 유지보수에 좋지 않았다. 이럴땐 border의 색을 transparent로 한 다음, 색만 바꿔주는 방식으로 작성하는게 좋겠다.
+
+```css
+div {
+  border: 1px solid transparent;
+}
+
+div:hover {
+  border-color: #cdcdcd;
+}
+```
