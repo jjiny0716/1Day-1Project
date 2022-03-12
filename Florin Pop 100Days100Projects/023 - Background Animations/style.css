@@ -22,7 +22,7 @@ body {
   overflow: hidden;
 }
 
-.container .panel {
+.container .block {
   position: absolute;
   background-size: 100vw 100vh;
   background-repeat: no-repeat;

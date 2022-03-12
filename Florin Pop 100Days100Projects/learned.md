@@ -191,11 +191,162 @@ childNodes는 자식 node들을 가져오는데, 이 node에는 text node도 포
 
 object-fit은 크기가 설정되어 있을 때만 작동한다! [스택오버플로우 글](https://stackoverflow.com/questions/34247337/object-fit-not-affecting-images)에서 더 알아보자.
 
-### 리팩토링 목표
+## 리팩토링 회고
 
-1. 추가적인 배경 애니메이션
-2. top, left대신 transform 이용해서 성능 개선
-3. 중복되는 코드 제거
+리팩토링 목표는, 성능이 안좋은 top, left를 변경하는 부분을 제거하고, transform: translate를 이용하고, 코드의 중복을 제거하는 것이었다. 우선, 단지 엘리먼트를 움직이기 위한 것이므로, top, left보단 transform: transition을 이용하는게 좋아보였다. 기존의 코드는, 애니메이션의 시작 좌표와 끝 좌표를 둘다 top, left를 이용해서 변경해주었다. 하지만, top, left는 블록들이 원래 있어야 할 위치(애니메이션의 끝) 를 설정할 때 사용하고, transform: translate를 이용하여 블록들을 애니메이션의 시작 위치로 이동시킨 다음, transform을 해제해주면, 원래 위치로 돌아가면서 자연스럽게 애니메이션이 동작하게 될 것이다.
+
+```js
+function setStartPositionsOfBlock(block, top, left) {
+  const distanceY = top - block.style.top.replace("px", "");
+  const distanceX = left - block.style.left.replace("px", "");
+  // 처음 위치를 세팅할땐, 애니메이션 없이 바로 이동해야 하므로, duration과 delay를 0ms로 설정해준다.
+  block.style.transitionDuration = "0ms";
+  block.style.transitionDelay = "0ms";
+  block.style.transform = `translate(${distanceX}px, ${distanceY}px)`;
+}
+
+function returnBlocksToOriginalPosition(block, duration, delay) {
+  block.style.transitionDuration = `${duration}ms`;
+  block.style.transitionDelay = `${delay}ms`;
+  // translate를 원래 위치로 돌려놓기만 해도, 자연스러운 애니메이션이 만들어진다.
+  block.style.transform = `translate(0px, 0px)`;
+}
+```
+
+다음으로, 여러가지의 애니메이션을 함수로 표현하는데 있어서 공통적으로 들어가는 코드가 엄청 많았다.
+
+```js
+// 애니메이션을 나타내는 함수들이다.
+function random() {
+  for (let r = 0; r < rowCount; r++) {
+    for (let c = 0; c < columnCount; c++) {
+      const panel = document.createElement("div");
+      panel.className = "panel";
+      panel.style.width = `${panelWidth}px`;
+      panel.style.height = `${panelHeight}px`;
+      const top = panelHeight * r;
+      const left = panelWidth * c;
+      panel.style.top = `${Math.random() * windowHeight}px`;
+      panel.style.left = `${Math.random() * windowWidth}px`;
+      panel.style.backgroundPosition = `${-left}px ${-top}px`;
+      panel.style.transitionDelay = `${Math.random() * 1000}ms`;
+      container.appendChild(panel);
+      setTimeout(() => {
+        panel.style.top = `${top}px`;
+        panel.style.left = `${left}px`;
+      }, 1000);
+    }
+  }
+}
+
+function fall() {
+  for (let r = 0; r < rowCount; r++) {
+    for (let c = 0; c < columnCount; c++) {
+      const panel = document.createElement("div");
+      panel.className = "panel";
+      panel.style.width = `${panelWidth}px`;
+      panel.style.height = `${panelHeight}px`;
+      const top = panelHeight * r;
+      const left = panelWidth * c;
+      panel.style.top = `${-panelHeight}px`;
+      panel.style.left = `${left}px`;
+      panel.style.backgroundPosition = `${-left}px ${-top}px`;
+      panel.style.transitionDelay = `${Math.random() * 1000}ms`;
+      container.appendChild(panel);
+      setTimeout(() => {
+        panel.style.top = `${top}px`;
+        panel.style.left = `${left}px`;
+      }, 500);
+    }
+  }
+}
+```
+
+반복문, 블록을 생성하는 부분, 시작 위치를 설정, 끝 위치 설정, 딜레이 설정 전부 중복이 발생하고 있다. 값을 생성하는 부분만 다르기 때문에, 값을 생성하는 부분만 함수에 남겨두고, 다른 부분은 전부 다른 함수로 빼줄 수 있었다.
+
+```js
+const blocks = [];
+// 블록들을 생성하고, 초기위치등을 설정해주는 함수
+function createBlocks() {
+  for (let r = 0; r < rowCount; r++) {
+    const row = [];
+    for (let c = 0; c < columnCount; c++) {
+      const block = document.createElement("div");
+      block.className = "block";
+      block.style.width = `${blockWidth}px`;
+      block.style.height = `${blockHeight}px`;
+      const top = blockHeight * r;
+      const left = blockWidth * c;
+      block.style.backgroundPosition = `${-left}px ${-top}px`;
+      block.style.top = `${top}px`;
+      block.style.left = `${left}px`;
+      container.appendChild(block);
+      row.push(block);
+    }
+    blocks.push(row);
+  }
+}
+
+function random() {
+  // 블록들을 순회하면서, 값을 설정해줌
+  for (let r = 0; r < rowCount; r++) {
+    for (let c = 0; c < columnCount; c++) {
+      const block = blocks[r][c];
+      // block의 시작위치 설정
+      // setTimeout으로 애니메이션 처리
+    }
+  }
+}
+
+function fall() {
+  // 블록들을 순회하면서, 값을 설정해줌
+  for (let r = 0; r < rowCount; r++) {
+    for (let c = 0; c < columnCount; c++) {
+      const block = blocks[r][c];
+      // block의 시작위치 설정
+      // setTimeout으로 애니메이션 처리
+    }
+  }
+}
+```
+
+문제는, 코드의 중복이 줄긴 했으나, 여전히 random, fall등의 애니메이션을 나타내는 함수들을 유지해야 했고, 새로운 애니메이션을 작성하려먼, 애니메이션을 나타내는 시작 위치, 딜레이들을 생성하는 로직만 작성하는게 아니라, 위의 함수 구조를 복사해서 다시 작성해줘야 한다는 것이었다. 그래서 애니메이션을 나타내는 함수들을 제거하고, 하나의 애니메이션 함수로 만들고 싶었는데, 블록들의 값을 지정해주는데 있어서 r과 c의 정보가 필요했고, 또 랜덤을 사용하고 있었기 때문에, 외부에서 값을 생성해서 함수에 전달하는 식의 방법이 불가능했다. 곰곰이 생각해보니 콜백함수를 이용하면 될 것 같았다. r과 c를 받아서, top, left, delay를 생성하는 함수들을 객체에 저장해두고, animation함수를 호출할 때, 콜백 함수로 전달해주면 되는 것이었다.
+
+```js
+const animationTypes = {
+  // 각 애니메이션에 해당하는 top, left, delay를 생성하는 함수들을 작성해둔다.
+  random: {
+    topGenerator: () => {
+      return Math.random() * windowHeight;
+    },
+    leftGenerator: () => {
+      return Math.random() * windowWidth;
+    },
+    delayGenerator: () => {
+      return Math.random() * 1000;
+    },
+  },
+  // 다른 애니메이션들
+};
+
+function animation({ topGenerator, leftGenerator, delayGenerator }) {
+  // top, left, delay를 생성하는 콜백 함수들을 객체 구조 분해 할당으로 받아온다.
+  for (let r = 0; r < rowCount; r++) {
+    for (let c = 0; c < columnCount; c++) {
+      const block = blocks[r][c];
+      setStartPositionsOfBlock(block, topGenerator(r, c), leftGenerator(r, c));
+      setTimeout(() => {
+        returnBlocksToOriginalPosition(block, 1000, delayGenerator(r, c));
+      }, 0);
+    }
+  }
+}
+// 호출!
+animation(animationTypes.random);
+```
+
+이제 새로운 애니메이션을 만들때, top, left, delay를 생성하는 3개의 함수와, html의 select에 이름을 추가해주면 끝난다. 코드의 양과 중복이 줄고, 읽기 좋아졌고, 유지보수에 용이한 구조가 되었다.  
+즐거운 리팩토링이었다.
 
 # 024 - Hover Board
 
