@@ -369,3 +369,15 @@ div:hover {
   border-color: #cdcdcd;
 }
 ```
+
+# 029 - Event KeyCodes And KPS
+
+## 객체 구조 분해 할당에서 변수 이름 바꾸기
+
+객체 구조 분해 할당을 이용할 때, 꼭 키 값만 변수명으로 이용할 수 있는게 아니다.
+
+```js
+function f({ elapsedTime: time, keyPressedCount: count, key, keyCode, code }) {
+  //...
+}
+```
