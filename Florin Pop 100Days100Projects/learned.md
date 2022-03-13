@@ -370,6 +370,16 @@ div:hover {
 }
 ```
 
+# 027 - Line Through Effect
+
+## vw, vh
+
+vw는 width에만 쓸 수 있는게 아니다. vh도 마찬가지고, 단순히 1vw는 화면 width의 100분의 1px로 변환된다고 생각하면 헷갈리지 않을 것 같다. 기존에 px이나 %등을 쓰던 모든 곳에 사용할 수 있다.
+
+## z-index가 안먹힐 때
+
+z-index가 안먹힐 땐 position이 static이 아닌 것으로 설정되어 있는지 확인해보자. 예전에도 이런 실수를 했던 것 같은데, 어떻게 하면 안잊을 수 있을까?..
+
 # 029 - Event KeyCodes And KPS
 
 ## 객체 구조 분해 할당에서 변수 이름 바꾸기
