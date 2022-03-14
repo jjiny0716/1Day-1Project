@@ -391,3 +391,9 @@ function f({ elapsedTime: time, keyPressedCount: count, key, keyCode, code }) {
   //...
 }
 ```
+
+# 031 - New Year Countdown
+
+## 빌더 패턴
+
+snowflakeGenerator를 작성할 때, 눈의 크기, 투명도 범위등 다양한 인자를 설정해주고 싶었다. 근데 이 모든 것을 생성자에서 인자로 받도록 작성했더니, 인자들의 순서를 외우기도 힘들고, 너무 전달할게 많아 복잡했다. 이를 해결하기 위해서 이것저것 찾아보다, 빌더 패턴이 떠올랐다. constructor의 인자가 많으면, 빌더 패턴을 이용해보자. 내가 사용한 방법은 클래스 폴더에, 클래스와 클래스 빌더 2개를 작성하고, 클래스 빌더만 export하고, 클래스 빌더에서 값을 설정할 수 있는 메서드와 build 메서드를 제공하고, build 메서드에선 리턴할 클래스를 인스턴스화하고 빌더 자신을 전달, 클래스의 constructor에서 builder내부의 설정된 값들을 이용해 자신을 초기화하는 방식으로 작성했다.
