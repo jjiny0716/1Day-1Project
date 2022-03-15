@@ -392,6 +392,12 @@ function f({ elapsedTime: time, keyPressedCount: count, key, keyCode, code }) {
 }
 ```
 
+# 030 - Animation Navigation
+
+## 해결해야할 것
+
+엘리먼트의 width를 바꿀때 transition을 적용시켜 부드럽게 커졌다 작아지는 애니메이션을 구현하려 하였다. 하지만 width: auto에서 width: 0 사이를 토글링할 때는 애니메이션이 적용되지 않았다. auto를 고정적인 값으로 변경해주니 잘 되었지만, 앞으로 유지보수하는데 있어서 문제가 생길 수 있다고 생각해 다른 방법들을 찾아보았다. max-width나 scale을 이용한 방법등 다양한 방법이 있었지만, 하나씩 문제가 있었다. 애니메이션에 딜레이가 생긴다던지, 내부 요소들까지 scale에 영향을 받는 등의 문제가 있어서, 결국 고정 크기를 사용할 수밖에 없었다.
+
 # 031 - New Year Countdown
 
 ## 빌더 패턴
