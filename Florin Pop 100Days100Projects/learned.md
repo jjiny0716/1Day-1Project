@@ -159,6 +159,52 @@ textarea {
 
 폼에서 특정 요소는 무조건 있어야하고, 이메일은 형식을 갖춰야해서, 사용자가 잘못된 입력을 했으면 사용자에게 피드백을 주는 요소를 자바스크립트로 구현하지 않아도 사용할 수 있다. HTML에서 기본적으로 제공하는 built-in form validation이라는 것이 있다. 폼 요소에 required를 추가하면, 사용자가 해당 폼 요소를 비웠을 때 피드백이 제공된다. 이외에도 길이나 특정 형식, 특정 패턴으로 입력을 강제할 수 있으므로, 유용하게 사용할 수 있다. 다만 커스터마이징이 필요하다면, css와 js로 추가적인 처리가 필요하겠다. 출처: [MDN문서](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
 
+## 016 - Clock
+
+## 다크모드 구현하기
+
+html 어트리뷰트와, css 변수를 이용하면 다크모드를 큰 어려움 없이 구현할 수 있다.
+
+```css
+/* light 모드 */
+:root[color-theme="light"] {
+  --color-background: #fff;
+  --color-text: #000;
+}
+/* dark 모드 */
+:root[color-theme="dark"] {
+  --color-background: #111;
+  --color-text: #fff;
+}
+/* root의 현재 프로퍼티 상태에 따라 변수의 값이 바뀌며, 이는 해당 변수를 참조하는 모든 엘리먼트의 변화를 일으킨다. */
+```
+
+이후 자바스크립트를 이용해 root(html)의 어트리뷰트를 토글링하면, 다크모드를 구현할 수 있다. 더 자세한 것은 다음 블로그 글을 참고해보자. [yijaee.log 다크모드 구현하기](https://velog.io/@yijaee/%EB%8B%A4%ED%81%AC%EB%AA%A8%EB%93%9C-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0)
+
+## 임시 border의 함정
+
+시계 초침을 픽셀 단위로 맞춘 후, 완성되었다고 생각하여 시계의 border를 제거했는데, 다시 레이아웃이 맞지 않게되었다. border가 차지했던 1px이 레이아웃에 영향을 주었던 것이다. 픽셀단위의 정교한 레이아웃을 구성할 때, 임시 border을 사용하지 말자.
+
+## Internationalization API
+
+날짜를 숫자가 아닌 영어(혹은 다른 언어)로 표현해야 할 때, 기존의 방식은 이랬다.
+
+```js
+const month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const month_names_short = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+```
+
+변수에 이름들을 저장해놓고, 날짜 값을 이용한 인덱싱으로 이름을 가져오는 방식이었다. 하지만 Internationalization API(Intl 객체)를 사용한다면, 이렇게 번거롭게 할 필요가 없다. Intl 객체는 각 언어에 맞는 문자비교, 숫자, 시간, 날짜비교를 제공하는, ECMAScript Internationalization API를 위한 이름공간이다.
+
+```js
+// 언어 설정도 가능하다!
+const formatter = new Intl.DateTimeFormat("en-us", { month: "short", weekday: "long" });
+const str = formatter.format(new Date(2022, 5, 12));
+console.log(str); // Jun Saturday
+```
+
+더 자세한 설명은 [MDN 문서](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Intl)를 참고하자.
+
 # 018 - Typing Speed Test
 
 ## childNodes vs children

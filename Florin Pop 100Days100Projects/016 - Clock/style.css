@@ -1,0 +1,124 @@
+:root[color-theme="light"] {
+  --color-background: #fff;
+  --color-text: #000;
+  --color-element-background: #000;
+  --color-element-text: #fff;
+  --color-second-hand: #000;
+  --color-minute-hand: #000;
+  --color-hour-hand: #e74c3c;
+}
+
+:root[color-theme="dark"] {
+  --color-background: #111;
+  --color-text: #fff;
+  --color-element-background: #fff;
+  --color-element-text: #000;
+  --color-second-hand: #fff;
+  --color-minute-hand: #fff;
+  --color-hour-hand: #e74c3c;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 500ms ease-in;
+}
+
+.dark-mode-toggle-btn {
+  position: absolute;
+  top: 10vh;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  color: var(--color-element-text);
+  background-color: var(--color-element-background);
+  transition: all 500ms ease-in;
+  cursor: pointer;
+}
+
+.clock-container {
+  text-align: center;
+}
+
+.clock-container .clock {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.clock .hand {
+  position: absolute;
+  left: 99px;
+  width: 3px;
+  transition: all 500ms linear;
+  transform-origin: center bottom;
+}
+
+.clock .hour-hand {
+  top: 30px;
+  height: 70px;
+  background-color: var(--color-second-hand);
+}
+
+.clock .minute-hand {
+  top: 10px;
+  height: 90px;
+  background-color: var(--color-minute-hand);
+}
+
+.clock .second-hand {
+  top: 0;
+  height: 100px;
+  background-color: var(--color-hour-hand);
+}
+
+.clock .center-point {
+  position: absolute;
+  top: 95px;
+  left: 95px;
+  width: 11px;
+  height: 11px;
+  border: 3px solid var(--color-hour-hand);
+  border-radius: 50%;
+  background-color: var(--color-second-hand);
+  transition: all 500ms ease-in;
+}
+
+.clock-container .timeText {
+  margin: 10px 0;
+  font-size: 3.5em;
+  font-weight: 300;
+}
+
+.clock-container .dateText {
+  margin: 5px 0;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: #888;
+}
+
+.clock-container .dateText .circle {
+  padding: 2px;
+  border-radius: 50%;
+  font-size: 0.9em;
+  color: var(--color-element-text);
+  background-color: var(--color-element-background);
+  transition: all 0.5s ease-in;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" color-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./src/main.mjs" defer></script>
+    <title>Clock</title>
+  </head>
+  <body>
+    <button class="dark-mode-toggle-btn">Dark mode</button>
+    <div class="clock-container">
+      <div class="clock">
+        <div class="hand hour-hand"></div>
+        <div class="hand minute-hand"></div>
+        <div class="hand second-hand"></div>
+        <div class="center-point"></div>
+      </div>
+      <p class="timeText"></p>
+      <p class="dateText"><span class="circle"></span></p>
+    </div>
+  </body>
+</html>
