@@ -449,3 +449,59 @@ function f({ elapsedTime: time, keyPressedCount: count, key, keyCode, code }) {
 ## 빌더 패턴
 
 snowflakeGenerator를 작성할 때, 눈의 크기, 투명도 범위등 다양한 인자를 설정해주고 싶었다. 근데 이 모든 것을 생성자에서 인자로 받도록 작성했더니, 인자들의 순서를 외우기도 힘들고, 너무 전달할게 많아 복잡했다. 이를 해결하기 위해서 이것저것 찾아보다, 빌더 패턴이 떠올랐다. constructor의 인자가 많으면, 빌더 패턴을 이용해보자. 내가 사용한 방법은 클래스 폴더에, 클래스와 클래스 빌더 2개를 작성하고, 클래스 빌더만 export하고, 클래스 빌더에서 값을 설정할 수 있는 메서드와 build 메서드를 제공하고, build 메서드에선 리턴할 클래스를 인스턴스화하고 빌더 자신을 전달, 클래스의 constructor에서 builder내부의 설정된 값들을 이용해 자신을 초기화하는 방식으로 작성했다.
+
+# 032 - Text to Life
+
+## 구현 방법
+
+배경 이미지를 배경에 깔아주는 게 아니라, 텍스트에 입혀지도록 하면 된다. 다음은 이를 구현하는 css 코드이다.
+
+```css
+.text {
+  color: transparent;
+  -webkit-background-clip: text;
+}
+```
+
+텍스트의 색을 투명하게 설정한 후, -webkit-background-clip: text를 이용해 배경 이미지가 텍스트에 입혀지도록 하는 것이다.
+
+## -webkit
+
+css 코드를 보다보면, 가끔식 -webkit이나 -moz같은 접두사를 볼 수 있다. 크로스 브라우징을 위한 것이라고 생각하면 되겠다.
+
+### 브라우저 별 접두어
+
+- -webkit- : 구글, 사파리 브라우저에 적용.
+- -moz- : 파이어폭스 브라우저에 적용.
+- -ms- : 익스플로러에 적용. (생략 가능)
+- -o- : 오페라 브라우저에 적용.
+
+## form 요소들을 받아오기
+
+form.elements를 하면 받아올 수 있고, form내부의 버튼이나, 인풋등 폼에 종속된 컨트롤들을 일괄적으로 받아올 수 있다.
+
+## setTimeout(handler, 0)의 뜻?
+
+새로고침을 했을 때 조금씩 스크롤이 되는 문제가 생겨서, 문서가 load된 후 문서의 최상단으로 scroll하는 함수를 다음과 같이 작성했다.
+
+```js
+window.addEventListener("load", () => {
+  window.scrollTo(0, 0);
+});
+```
+
+근데 동작하지 않았다. 다음과 같이 작성하니 동작했다.
+
+```js
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+  }, 0);
+});
+```
+
+아마 스크립트에서 무언가 처리를 하면서 스크롤이 된 것 같다. setTimeout(handler, 0)으로 handler를 실행해주면, main에 작성했던 코드를 실행하는 전역 실행 컨텍스트가 종료된 이후에 handler가 실행되게된다. 결론은 setTimeout에 0을 전달해도, 바로 실행되는 게 아니라, 콜 스택이 비고 태스크 큐에서 자신의 차례가 왔을 때 실행이 되게 되므로, 바로 실행되지 않는다(0으로 전달해도 최소 4ms로 딜레이가 설정된다고 한다). 다음의 [블로그 글](https://velog.io/@edie_ko/javascript-eventloop)과 [유튜브 영상](https://www.youtube.com/watch?v=8aGhZQkoFbQ&ab_channel=JSConf)을 참고했다. 헷갈릴 때 이 자료들을 참고하면 좋겠다.
+
+## 사용자에게 URL 입력받을때 보안에 문제가 생길 수 있을까?
+
+프로젝트에서 사용자에게 배경 이미지를 URL로 입력하도록 했는데, 생각해보니 보안 문제가 발생할 수도 있겠다는 생각을 했다(물론 개인정보같은 것을 다루진 않지만). 올바른 URL인지 검사후 사용하도록 했는데, 이걸로 충분한진 모르겠다. 사용자 입력을 받을때 보안에 대해 항상 생각하고 있자.

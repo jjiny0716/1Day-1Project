@@ -1,0 +1,110 @@
+:root {
+  --color-default-text: #888;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "Fredoka", sans-serif;
+  overflow: hidden;
+}
+
+.text {
+  height: 100%;
+  margin: 0;
+  font-size: 4px;
+  font-weight: 700;
+  line-height: 4px;
+  word-break: break-all;
+  color: transparent;
+  background-color: var(--color-default-text);
+  /* background-size: cover; */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-clip: text;
+}
+
+.setting-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5em;
+  color: #333;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 200ms ease;
+  display: none;
+}
+
+.setting-btn:hover {
+  color: #111;
+  background-color: #ddd;
+}
+
+.setting-btn.active {
+  display: block;
+}
+
+.setting-form {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 250px;
+  height: 230px;
+  padding: 10px 15px;
+  border: 2px solid #111;
+  border-radius: 5px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: none;
+}
+
+.setting-form.active {
+  display: block;
+}
+
+.setting-form .size-input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.setting-form .url-input {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+  resize: none;
+}
+
+.setting-form .setting-commit-btn {
+  padding: 3px 6px;
+  font-family: "Fredoka", sans-serif;
+  cursor: pointer;
+}
+
+.setting-form .exit-setting-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 0px 2px;
+  border: none;
+  font-size: 1.1em;
+  background-color: transparent;
+  cursor: pointer;
+}
