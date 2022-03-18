@@ -1,0 +1,91 @@
+:root {
+  --color-background: #ded8ea;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  background-color: var(--color-background);
+}
+
+main {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.testimonial-container {
+  width: 700px;
+  height: 500px;
+  padding: 50px;
+  margin: 20px;
+  box-shadow: 0px 35px 10px -20px transparent;
+  display: flex;
+  flex-direction: column;
+  transition: all 500ms ease;
+}
+
+.testimonial-container .quote {
+  font-size: 4em;
+  color: rgba(0, 0, 0, 0.2);
+  align-self: center;
+}
+
+.testimonial-container .text {
+  height: 100%;
+  line-height: 2em;
+}
+
+.testimonial-container .name {
+  font-size: 1.1em;
+  letter-spacing: 0.15em;
+  font-weight: bold;
+  text-transform: uppercase;
+  align-self: flex-end;
+}
+
+.testimonial-container .author-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.testimonial-container .author-list .author button {
+  width: 55px;
+  height: 55px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 500ms ease;
+}
+
+.testimonial-container .author-list .author button img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-container .author-list .author.active button {
+  transform: scale(1.1);
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.5);
+}

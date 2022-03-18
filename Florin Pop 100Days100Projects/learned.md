@@ -205,6 +205,26 @@ console.log(str); // Jun Saturday
 
 더 자세한 설명은 [MDN 문서](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Intl)를 참고하자.
 
+# 017 - Testimonial Design
+
+## box-shadow 4번째 음수 값
+
+box-shadow에서 4번째 값은 spread-radius라는 이름이 붙여져 있다. 즉 그림자의 확산 거리를 나타내며, 음수를 준다면 그림자가 작아진다고 생각하면 좋을 것 같다.
+
+## 객체 구조 분해 할당 중첩
+
+객체 구조 분해 할당을 활용하여 중첩된 객체의 프로퍼티를 변수로 빼내는 게 가능하다.
+
+```js
+const {
+  color: { r, g, b },
+  text,
+  name,
+} = selectedTestimonial;
+```
+
+아마 구조 분해 할당 안에서 또 구조 분해 할당을 이용한 것 같다.
+
 # 018 - Typing Speed Test
 
 ## childNodes vs children
