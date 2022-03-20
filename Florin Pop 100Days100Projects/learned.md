@@ -531,3 +531,9 @@ window.addEventListener("load", () => {
 ## Math.atan vs Math.atan2
 
 눈동자와 마우스 사이의 각도를 계산하기 위해 atan2를 사용했다. 처음에 atan을 사용했었는데, 잘 되지 않았다. atan과 atan2은 어떤 차이가 있을까? atan은 -90, 90도의 범위만 계산이 가능하다. 예를 들어 atan(dy / dx)를 실행했을 때, dy와 dx가 둘다 음수라면 둘다 양수인 경우와 구분이 불가능해진다. 원래의 부호 정보가 사라지기 때문이다. 그래서 atan2(dy, dx)처럼 dy와 dx를 따로 전달하여, 원래의 부호 정보를 가지고 처리하기 때문에, 모든 사분면의 범위를 처리해낼 수 있다.
+
+# 038 - 3D Background Boxes
+
+## 분리되는 효과 구현하기
+
+flex wrap: wrap과 justify-content: space-between을 이용하면 쉽게 만들 수 있다. 아이템들이 컨테이너 내에서 서로 거리두기를 하기 때문에, 컨테이너의 크기를 조절하면 거기에 맞춰 아이템들이 이동하게 된다. 처음에 16개의 박스에 각각 background-image가 들어갔음에도 짝이 맞아보이는 이유는, background-position을 이용해 image의 시작 위치를 각각 조절해주었기 때문이다.
