@@ -1,0 +1,68 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.image-container {
+  position: absolute;
+  width: 100vw;
+  transition: all 1000ms ease;
+}
+
+.image-container .image {
+  /* position: absolute; */
+  width: 100vw;
+  height: 60vh;
+  margin: 0px auto;
+  background-size: cover;
+  background-position: center;
+}
+
+.image-container .reflected {
+  position: absolute;
+  top: 60.5vh;
+  width: 100vw;
+  height: 60vh;
+  background-size: cover;
+  background-position: center;
+  transform: rotateX(180deg);
+}
+
+.container .move-btn {
+  position: absolute;
+  top: 45vh;
+  width: 60px;
+  height: 60px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  z-index: 1;
+  transition: all 200ms ease-in-out;
+}
+
+.container .move-btn:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.container .move-btn.prev {
+  left: 40px;
+}
+
+.container .move-btn.next {
+  right: 40px;
+}
+
+.container i {
+  font-size: 2.2rem;
+  color: #fff;
+}
