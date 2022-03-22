@@ -551,3 +551,11 @@ background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%,
 ## 분리되는 효과 구현하기
 
 flex wrap: wrap과 justify-content: space-between을 이용하면 쉽게 만들 수 있다. 아이템들이 컨테이너 내에서 서로 거리두기를 하기 때문에, 컨테이너의 크기를 조절하면 거기에 맞춰 아이템들이 이동하게 된다. 처음에 16개의 박스에 각각 background-image가 들어갔음에도 짝이 맞아보이는 이유는, background-position을 이용해 image의 시작 위치를 각각 조절해주었기 때문이다.
+
+# 042 - Verify Account UI
+
+## 고민해볼 점
+
+1. 컴포넌트 단위로 개발하고 싶다.
+2. 컴포넌트에서 이벤트 위임을 통해 이벤트를 처리할 때 target에 등록하는 게 좋을까?
+3. input 이벤트와 keydown, keyup 이벤트를 어떻게 구별해 사용해야할지 생각해보자.
