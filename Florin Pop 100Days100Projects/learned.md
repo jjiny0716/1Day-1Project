@@ -559,3 +559,13 @@ flex wrap: wrap과 justify-content: space-between을 이용하면 쉽게 만들 
 1. 컴포넌트 단위로 개발하고 싶다.
 2. 컴포넌트에서 이벤트 위임을 통해 이벤트를 처리할 때 target에 등록하는 게 좋을까?
 3. input 이벤트와 keydown, keyup 이벤트를 어떻게 구별해 사용해야할지 생각해보자.
+
+# 043 - Rotated Nav Animation
+
+## 구현 방법
+
+transform: rotate()를 사용하면 되는데, 문제는 스크롤을 했을 때 회전된 영역에서 스크롤이 자연스럽게 일어나는 게 아니라, 문서 전체에서 스크롤이 되기 때문에, 회전된 방향으로 스크롤하는 느낌이 안난다는 것이었다. 그래서 article구역에 스크롤을 할 수 있게 하고싶었는데, 이때 article의 높이를 고정하고, overflow: scroll을 주면 된다. 기본 문서의 스크롤을 hidden 처리하면 완벽하게 구현된다.
+
+## 살짝 튀어나왔다 들어가는 느낌의 애니메이션
+
+transition timing function을 이해하고 있으면 쉽게 만들 수 있다. 평상시에 사용하면 ease, ease-in같은 것들은 최솟값, 최댓값 사이에서만 움직이기 때문에, 범위 밖의 값을 가지는 순간이 필요하다면, 따로 커스텀한 timing function을 사용하여야 한다. 이때 개발자도구에 가서 element에 적용되어있는 timing function을 누르면, 이를 수정할 수 있는 툴을 제공해준다. 이를 잘 사용해 멋진 애니메이션을 만들어보자.

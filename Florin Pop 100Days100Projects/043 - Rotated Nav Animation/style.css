@@ -1,0 +1,145 @@
+:root {
+  --color-btn-background: #ff7979;
+  --color-side-nav-background: #333333;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: var(--color-side-nav-background);
+  transition: all 1000ms linear;
+  overflow: hidden;
+}
+
+.rotate-toggle-btn {
+  position: fixed;
+  top: -100px;
+  left: -100px;
+  width: 200px;
+  height: 200px;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.8em;
+  color: white;
+  background-color: var(--color-btn-background);
+  transition: transform 400ms linear;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.container.rotated .rotate-toggle-btn {
+  transform: rotate(-90deg);
+}
+
+.rotate-toggle-btn i {
+  position: absolute;
+  top: 128px;
+}
+
+.rotate-toggle-btn i.fa-xmark {
+  left: 50px;
+}
+
+.rotate-toggle-btn i.fa-bars {
+  left: 128px;
+}
+
+.side-nav {
+  position: fixed;
+  top: 75vh;
+  left: 0;
+  font-size: 1.2em;
+  transform: translateX(-200px);
+  transition: transform 450ms cubic-bezier(0.23, 0.22, 0.35, 1.38);
+}
+
+.container.rotated .side-nav {
+  transform: translateX(0);
+  transition-delay: 300ms;
+}
+
+.side-nav .link-list {
+  margin-left: 30px;
+}
+
+.side-nav .link-list li {
+  margin: 30px 0;
+  color: white;
+}
+
+.side-nav .link-list li a {
+  color: white;
+  text-decoration: none;
+}
+
+.side-nav .link-list li a i {
+  margin-right: 10px;
+}
+
+.side-nav .link-list li:nth-child(1) {
+  margin-left: 0px;
+  color: white;
+}
+.side-nav .link-list li:nth-child(2) {
+  margin-left: 15px;
+}
+.side-nav .link-list li:nth-child(3) {
+  margin-left: 30px;
+}
+
+.main {
+  height: 100vh;
+  background-color: white;
+  transform-origin: 0 0;
+  transition: transform 400ms linear, height 400ms linear;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+}
+
+.container.rotated .main {
+  height: 146vh;
+  transform: rotate(-15deg);
+}
+
+.article-container {
+  margin-top: 160px;
+  max-width: 1000px;
+  color: #333;
+}
+
+.article-container .article-title {
+  margin: 0;
+}
+
+.article-container .article-writer {
+  margin: 0;
+  font-weight: 400;
+  font-style: italic;
+  color: #777;
+}
+
+.article-container p {
+  line-height: 1.4em;
+}
+
+.article-container .image-desc {
+  margin: 10px 0;
+}
+
+.article-container img {
+  width: 100%;
+}
