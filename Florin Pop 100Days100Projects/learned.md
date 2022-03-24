@@ -569,3 +569,17 @@ transform: rotate()를 사용하면 되는데, 문제는 스크롤을 했을 때
 ## 살짝 튀어나왔다 들어가는 느낌의 애니메이션
 
 transition timing function을 이해하고 있으면 쉽게 만들 수 있다. 평상시에 사용하면 ease, ease-in같은 것들은 최솟값, 최댓값 사이에서만 움직이기 때문에, 범위 밖의 값을 가지는 순간이 필요하다면, 따로 커스텀한 timing function을 사용하여야 한다. 이때 개발자도구에 가서 element에 적용되어있는 timing function을 누르면, 이를 수정할 수 있는 툴을 제공해준다. 이를 잘 사용해 멋진 애니메이션을 만들어보자.
+
+# 046 - Image Password Strength
+
+## inset
+
+inset 속성은 top, right, bottom, left의 축약형이다. 다른 padding이나 margin처럼 각각 사이즈를 써주면 된다. 모달의 오버레이 영역을 화면 가득 채우기 위해 position: fixed와 inset: 0을 사용했다. inset: 0은 top, right, bottom, left가 모두 0이 되는 것이므로 화면을 가득 채우게 된다.
+
+## backdrop-filter
+
+요소에 그래픽 효과를 주는 filter라는 속성을 알고 있었는데, 배경에 이 filter를 사용하고 싶었다. 찾아보니 backdrop-filter 속성을 찾았다. backdrop-filter는 배경에 filter를 적용할 수 있게 해준다. 배경에 blur, opacity등의 그래픽 효과를 주고싶다면 backdrop-filter를 사용하자.
+
+## 모달창은 html 문서의 어디에 생겨야 하는가
+
+모달은 화면 최상단에 떠서 다른 요소들을 가리고, 사용자의 상호작용을 기다리는 창이기 때문에, 문서 최상단에 생겨야 논리적으로 맞는 것 같다. body바로 아래에 생성하면 될 것 같고, 컴포넌트 방식으로 개발할 땐 body바로 밑에 modal이 생길 div를 하나 잡아놓으면 편할 것 같다. body를 target으로 해버리면 innerHTML때문에 다른 요소들이 다 지워져버린다.
