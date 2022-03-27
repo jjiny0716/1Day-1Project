@@ -1,0 +1,60 @@
+:root {
+  --color-theme-toggle-btn-background: #111111;
+  --color-moon: #f1c40f;
+  --color-sun: #f39c12;
+}
+
+:root[color-theme="light"] {
+  --color-background: #fafafa;
+}
+
+:root[color-theme="dark"] {
+  --color-background: #292c35;
+}
+
+body {
+  height: 100vh;
+  background-color: var(--color-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 300ms ease;
+}
+
+.theme-toggle-btn {
+  position: relative;
+  width: 74px;
+  height: 40px;
+  padding: 4px 4px 4px 6px;
+  border: none;
+  border-radius: 20px;
+  font-size: 24px;
+  background-color: var(--color-theme-toggle-btn-background);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.theme-toggle-btn .fa-moon {
+  color: var(--color-moon);
+}
+
+.theme-toggle-btn .fa-sun {
+  color: var(--color-sun);
+}
+
+.theme-toggle-btn .circle {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  transition: all 300ms ease;
+}
+
+.theme-toggle-btn.dark .circle {
+  transform: translateX(34px);
+}
