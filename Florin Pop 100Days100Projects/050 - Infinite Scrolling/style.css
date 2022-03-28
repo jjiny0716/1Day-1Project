@@ -1,0 +1,102 @@
+:root {
+  --color-background: #353b48;
+  --color-post-background: #4a4f5b;
+  --shadow-post: 0 2px 4px rgba(0, 0, 0, 0.25);
+  --color-post-date: #aaa;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  padding-bottom: 150px;
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  background-color: var(--color-background);
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.header {
+  text-align: center;
+}
+
+.header .title {
+  margin: 40px 0 45px 0;
+}
+
+.post {
+  padding: 20px 40px;
+  border-radius: 5px;
+  background-color: var(--color-post-background);
+  box-shadow: var(--shadow-post);
+}
+
+.post:not(:last-child) {
+  margin-bottom: 40px;
+}
+
+.post .title {
+  margin: 0;
+}
+
+.post .date {
+  display: block;
+  margin-bottom: 20px;
+  color: var(--color-post-date);
+}
+
+.post .content {
+  margin: 0;
+  line-height: 1.5em;
+}
+
+.loading-animation-dots {
+  position: fixed;
+  bottom: 50px;
+  /* align center */
+  left: 50vw;
+  transform: translateX(-23px);
+  width: 45px;
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.loading-animation-dots .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #fff;
+  animation: upDown 0.5s infinite ease-in-out;
+}
+
+.loading-animation-dots .dot:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.loading-animation-dots .dot:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+@keyframes upDown {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}

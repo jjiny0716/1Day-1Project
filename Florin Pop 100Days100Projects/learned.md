@@ -640,3 +640,20 @@ html 요소의 클래스를 바꿔가며 애니메이션 효과를 주도록 코
 
 1. 1일 1프로젝트를 계속 하다보니, 간단한 디자인이나 기능은 순식간에 구현할 수 있게 되었다. 시맨틱한 html 문서 작성이나, 효율적으로 css를 작성하는 방법같은 기본적인 것들을 잘 지키지 못했던 것 같기도 하다. 기본으로 돌아가는 공부가 조금 필요하겠다.
 2. 애니메이션을 위해 엘리먼트의 class를 직접 조작했는데, 상태를 기반으로 렌더링한다는 기존의 컨셉에서 멀어진 것 같다. Diff 알고리즘에 대한 [좋은 블로그 글](https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Virtual-DOM/)을 찾았는데, 빨리 배워서 적용해보고싶다. 기대된다.
+
+# 050 - Infinite Scrolling
+
+## fetch의 경로
+
+App.js에서 로컬 json 파일을 읽어들이기 위해 "../data/posts.JSON"이라는 경로를 사용했다. 그런데 404 not found에러를 내며 불러오지 못했다. 당시 폴더 구조는 다음과 같았다.
+
+```
+.
+├── index.html
+├── src
+│   └── App.js
+└── data
+    └── posts.JSON
+```
+
+경로를 "data/posts.JSON"으로 바꾸니 해결되었는데, 아마 fetch에서 상대경로를 이용할 때 js파일이 기준이 아니고, js파일을 사용하는 html파일 기준이 되는 것 같다.
