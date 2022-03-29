@@ -657,3 +657,9 @@ App.js에서 로컬 json 파일을 읽어들이기 위해 "../data/posts.JSON"�
 ```
 
 경로를 "data/posts.JSON"으로 바꾸니 해결되었는데, 아마 fetch에서 상대경로를 이용할 때 js파일이 기준이 아니고, js파일을 사용하는 html파일 기준이 되는 것 같다.
+
+# 054 - Rotation Slideshow
+
+## 중복 등록
+
+렌더링 이후 setInterval을 이용해 2초마다 새 슬라이드로 바뀌도록 작성했는데, 문제는 업데이트전에 기존에 등록했던 interval을 해제하지 않아 렌더링할 때마다 interval이 늘어나는 오류가 발생했다. 이벤트, setTimeout, setInterval등은 등록한 클래스가 사라진다고 해서 같이 사라지는게 아니므로 항상 이를 해제하는 코드를 같이 작성해야 한다.
