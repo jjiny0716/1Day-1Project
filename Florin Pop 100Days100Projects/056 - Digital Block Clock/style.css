@@ -1,0 +1,51 @@
+:root {
+  --color-background: #222222;
+  --color-block: #ffffff;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  background-color: var(--color-background);
+}
+
+#app {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clock {
+  display: flex;
+}
+
+.clock .panel {
+  margin: 0 30px;
+  display: flex;
+}
+
+.clock .number {
+  margin: 0 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 25px);
+  grid-template-rows: repeat(3, 25px);
+  gap: 5px;
+}
+
+.clock .number .block {
+  width: 25px;
+  height: 25px;
+  background-color: var(--color-block);
+  opacity: 0;
+}
+
+.clock .number .block.show {
+  opacity: 1;
+}
