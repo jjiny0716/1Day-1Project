@@ -1,0 +1,78 @@
+:root {
+  --color-background: #F6E58D;
+  --color-theme: #9B59B6;
+  --color-btn-border: #7e3f97;
+  --color-bill: #6ab04c;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--color-background);
+  overflow: hidden;
+}
+
+#app {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gotoMillionaire {
+  text-align: center;
+}
+
+.gotoMillionaire .become-millionaire-btn {
+  padding: 15px 30px;
+	border: 2px solid var(--color-btn-border);
+	border-radius: 8px;
+	box-shadow: 0 6px var(--color-theme), 0 8px var(--color-btn-border); 
+  font-size: 16px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background-color: var(--color-theme);
+  cursor: pointer;
+	transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.gotoMillionaire .become-millionaire-btn:active {
+	transform: translateY(8px);
+	box-shadow: 0 0 var(--color-theme), 0 0 var(--color-btn-border);
+}
+
+.gotoMillionaire .become-millionaire-btn:focus {
+	outline: none;
+}
+
+.gotoMillionaire .count {
+  color: var(--color-theme);
+}
+
+.millionaire {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.millionaire .congrats {
+  position: absolute;
+  top: 50vh;
+  left: 0;
+  width: 100vw;
+  text-align: center;
+  transform: translateY(-50%);
+}
+
+.millionaire i {
+  color: var(--color-bill);
+  margin: 0 2px;
+}

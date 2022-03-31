@@ -677,3 +677,36 @@ setInterval은 항상 일정한 간격으로 함수를 호출한다. 극단적�
 ## 생각해볼점
 
 1. setInterval로 1000ms에 한번씩 함수를 호출한다 해도, 정확히 1000ms에 한번씩 업데이트되는 것을 보장하지 않는다. 현재 시각을 정확히 알려면 Date객체를 사용할 수밖에 없나?
+
+# 057 - Become a Millionaire
+
+## 3d 버튼
+
+기존에 3d 버튼을 구현할 때 생활코딩에서 배웠던 형태를 활용했는데, 이번에 예제에 멋진 3d버튼 소스가 있길래 사용했다. 어떻게 구현하는지 까먹을 것 같아 여기 기록해놓는다.
+
+```css
+button {
+  padding: 15px 30px;
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 6px var(--color-theme), 0 8px var(--color-border);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background-color: var(--color-theme);
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+button:active {
+  transform: translateY(8px);
+  box-shadow: 0 0 var(--color-theme), 0 0 var(--color-border);
+}
+```
+
+## 컴포넌트 구조
+
+처음에 계획했던 컴포넌트 구조가 얼추 완성되었고, 간단하게나마 프로젝트에 사용해보았다. 컴포넌트 단위 개발에 추가로, diffing알고리즘의 적용과, 리액트 컴포넌트처럼 다양한 라이프사이클 메서드를 가지는 것이었는데, 얼추 잘 된 것 같아 기쁘다. 렌더링도 잘되고, 부모의 state를 이용하는 props가 계속 업데이트되고, 클래스(컴포넌트)제거도 잘된다. 다만 기능이 많아지면서 점점 작성해야하는 것도 많아지고 복잡해져서 조금 아쉽다. 계속 사용해보면서 점차 개선하기로 하고, 다음은 window history api를 이용해 라우팅을 구현해보고싶다.
