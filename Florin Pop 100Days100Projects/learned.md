@@ -710,3 +710,19 @@ button:active {
 ## 컴포넌트 구조
 
 처음에 계획했던 컴포넌트 구조가 얼추 완성되었고, 간단하게나마 프로젝트에 사용해보았다. 컴포넌트 단위 개발에 추가로, diffing알고리즘의 적용과, 리액트 컴포넌트처럼 다양한 라이프사이클 메서드를 가지는 것이었는데, 얼추 잘 된 것 같아 기쁘다. 렌더링도 잘되고, 부모의 state를 이용하는 props가 계속 업데이트되고, 클래스(컴포넌트)제거도 잘된다. 다만 기능이 많아지면서 점점 작성해야하는 것도 많아지고 복잡해져서 조금 아쉽다. 계속 사용해보면서 점차 개선하기로 하고, 다음은 window history api를 이용해 라우팅을 구현해보고싶다.
+
+# 059 - Direction Aware Hover Effect
+
+## grid 컨테이너에서 border 표현하기
+
+grid 컨테이너에 1px의 border를 가지는 아이템 4개를 2x2로 배치했다. 그런데 border들이 겹치면서, 바깥쪽은 1px인데 안쪽 border는 2px이 되어 이상하게 표현되었다. 이를 해결하기 위해 grid 컨테이너의 padding과 gap, background-color를 이용해 border를 표현했다.
+
+```css
+.card-container {
+  padding: 1px;
+  background-color: var(--color-card-border);
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 1px 1px;
+}
+```
