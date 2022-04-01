@@ -18,13 +18,13 @@ body {
   align-items: center;
 }
 
-.cards-container {
+.card-container {
   width: 90vw;
   height: 90vh;
   display: flex;
 }
 
-.cards-container .card {
+.card-container .card {
   height: 100%;
   border-radius: 40px;
   margin: 0 10px;
@@ -32,10 +32,28 @@ body {
   background-size: cover;
   cursor: pointer;
   flex: 1;
-  /* innerHTML을 이용했더니 transition이 적용되지 않는다... */
-  transition: all 1000ms ease;
+  transition: flex 800ms ease;
 }
 
-.cards-container .card.active {
+.card-container .card.active {
   flex: 8;
+}
+
+
+.card-container .card.loading {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to right, #ddd 0%, #cacaca 10%, #ddd 20%, #ddd 100%);
+  background-size: 200% 100%;
+  animation: movebg 1s linear infinite;
+}
+
+@keyframes movebg {
+  0% {
+    background-position: 50% 0;
+  }
+
+  100% {
+    background-position: -150% 0;
+  }
 }
