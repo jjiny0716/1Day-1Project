@@ -1,0 +1,107 @@
+:root {
+  --color-background: #f8f9fd;
+  --shadow-live-user-filter: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  --color-header-background: #3e57db;
+  --color-header-input-background: #2b3d99;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: var(--color-background);
+}
+
+#app {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.live-user-filter {
+  width: 350px;
+  border-radius: 5px;
+  box-shadow: var(--shadow-live-user-filter);
+  overflow: hidden;
+}
+
+.user-filter {
+  padding: 30px 20px;
+  color: #fff;
+  background-color: var(--color-header-background);
+}
+
+.user-filter .title {
+  margin: 0;
+  font-size: 1.2em;
+  letter-spacing: 1px;
+}
+
+.user-filter .desc {
+  margin: 0 0 15px 0;
+  font-size: 0.9em;
+  color: #ddd;
+}
+
+.user-filter input {
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 50px;
+}
+
+.user-filter input:focus {
+  outline: 2px solid #fff;
+}
+
+.user-filter input {
+  font-size: 1.05em;
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  background-color: var(--color-header-input-background);
+}
+
+.live-user-filter .users {
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.users .user {
+  padding: 20px;
+  display: flex;
+}
+
+.users .user:not(:last-child) {
+  border-bottom: 1px solid #ddd;
+}
+
+.users .user .avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.users .user .name {
+  margin: 5px 0 10px 0;
+}
+
+.users .user .location {
+  margin: 0;
+  font-size: 0.85em;
+  color: #333;
+}
