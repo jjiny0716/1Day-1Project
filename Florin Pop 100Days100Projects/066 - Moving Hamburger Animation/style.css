@@ -1,0 +1,69 @@
+:root {
+  --color-background: #9B59B6;
+  --shadow-menu-bar: 0 19px 38px rgba(0, 0, 0, 0.25);
+  --color-menu-default: #DDDDDD;
+  --color-menu-active: #E9967A;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  background-color: var(--color-background);
+}
+
+#app {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-bar {
+  position: relative;
+  padding: 35px 40px;
+  border-radius: 5px;
+  box-shadow: var(--shadow-menu-bar);
+  background-color: #fff;
+  display: flex;
+}
+
+.menu-bar .menu {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.menu-bar .menu:nth-child(2) {
+  margin: 0 70px;
+}
+
+.menu-bar .menu .bar {
+  height: 5px;
+  width: 45px;
+  margin: 5px 0;
+  border-radius: 2px;
+  background-color: var(--color-menu-default);
+}
+
+.menu-bar .menu .bar.short {
+  transform: scaleX(0.8);
+}
+
+.menu-bar .menu.left .bar.short {
+  transform-origin: left;
+}
+
+.menu-bar .menu.right .bar.short {
+  transform-origin: right;
+}
+
+.menu-bar .menu.active {
+  position: absolute;
+  transition: all 500ms ease;
+}
+
+.menu-bar .menu.active .bar {
+  background-color: var(--color-menu-active);
+  transition: all 500ms linear;
+}
