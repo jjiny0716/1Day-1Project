@@ -1,0 +1,48 @@
+:root {
+  --color-theme: #686DE0;
+  --shadow-medium: 0 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--color-theme);
+}
+
+#app {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dad-jokes-container {
+  width: 750px;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-medium);
+  text-align: center;
+  background-color: #fff;
+}
+
+.dad-jokes-container .title {
+  font-size: 1.4em;
+  font-weight: 400;
+  color: #888;
+}
+
+.dad-jokes-container .joke {
+  font-size: 2em;
+}
+
+.dad-jokes-container .get-joke-btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 7px;
+  box-shadow: var(--shadow-medium);
+  font-size: 1.1em;
+  color: #fff;
+  background-color: var(--color-theme);
+  cursor: pointer;
+}
