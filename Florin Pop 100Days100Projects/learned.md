@@ -752,3 +752,9 @@ grid 컨테이너에 1px의 border를 가지는 아이템 4개를 2x2로 배치�
 # 069 - Dad Jokes
 
 쉽다!
+
+# 073 - Form Validation
+
+## 컴포넌트화
+
+마크업을 작성하던 도중, label, input, i 2개, small의 태그를 담고있는 input-container가 반복되는 것을 발견했다. 또 유효한 입력인지 아닌지에 대한 상태를 가지고 있으므로, 중복되는 코드를 컴포넌트로 바꿀 수 있었다. 단 input-container들은 placeholder나 유효한 입력을 체크하는 방식이 조금씩 달랐는데, 이를 props로 전달하니 잘 작동했다.
