@@ -758,3 +758,28 @@ grid 컨테이너에 1px의 border를 가지는 아이템 4개를 2x2로 배치�
 ## 컴포넌트화
 
 마크업을 작성하던 도중, label, input, i 2개, small의 태그를 담고있는 input-container가 반복되는 것을 발견했다. 또 유효한 입력인지 아닌지에 대한 상태를 가지고 있으므로, 중복되는 코드를 컴포넌트로 바꿀 수 있었다. 단 input-container들은 placeholder나 유효한 입력을 체크하는 방식이 조금씩 달랐는데, 이를 props로 전달하니 잘 작동했다.
+
+# 080 - Steps
+
+## 버튼 비활성화하기
+
+javascript를 사용하지 않는 선에서 2가지 방법을 사용할 수 있다.
+
+```html
+<button disabled></button>
+<!-- disabled 속성을 추가하기 -->
+```
+
+```css
+/* css에서 pointer-events속성의 값을 none으로 설정하기 */
+.disabled {
+  pointer-events: none;
+
+  /* 아래 코드로 시각적인 피드백을 줄 수 있다. */
+  cursor: not-allowed;
+}
+```
+
+## getAttribute vs hasAttribute
+
+getAttribute를 했을때 해당 attribute가 없다면, null을 반환하나, disabled같이 값이 없는(암묵적으로 boolean 값을 갖는) attribute는 ''를 반환한다. 이러한 성질 때문에 attribute의 존재를 검사하는 작업에서 오류가 나기 쉽다. hasAttribute를 사용하도록 하자.

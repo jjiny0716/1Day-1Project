@@ -1,0 +1,97 @@
+:root {
+  --color-theme: #3498DB;
+  --color-gray: #777;
+  --color-light-gray: #E0E0E0;
+  --color-background: #F6F7FB;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--color-background);
+}
+
+#app {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.steps-container {
+  width: 500px;
+}
+
+.steps-container .steps-progress {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.steps-container .steps-progress .step {
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--color-light-gray);
+  border-radius: 50%;
+  color: var(--color-gray);
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 500ms ease;
+}
+
+.steps-container .steps-progress .step.active {
+  color: #000;
+  border-color: var(--color-theme);
+}
+
+.steps-container .steps-progress .progress {
+  position: absolute;
+  top: calc(50% - 2px);
+  left: 15px;
+  width: calc(100% - 30px);
+  height: 4px;
+  background-color: var(--color-theme);
+  z-index: -1;
+  transform-origin: left;
+  transition: all 500ms ease;
+}
+
+.steps-container .steps-progress .progress.background {
+  background-color: var(--color-light-gray);
+  z-index: -2;
+}
+
+.steps-container .controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.steps-container .controls button {
+  width: 90px;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  margin: 0 8px;
+  font-size: 0.9em;
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+  background-color: var(--color-theme);
+  cursor: pointer;
+}
+
+.steps-container .controls button:active {
+  transform: scale(0.97);
+}
+
+.steps-container .controls button:disabled {
+  cursor: not-allowed;
+  background-color: var(--color-light-gray);
+}
