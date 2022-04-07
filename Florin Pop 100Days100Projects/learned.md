@@ -783,3 +783,19 @@ javascript를 사용하지 않는 선에서 2가지 방법을 사용할 수 있�
 ## getAttribute vs hasAttribute
 
 getAttribute를 했을때 해당 attribute가 없다면, null을 반환하나, disabled같이 값이 없는(암묵적으로 boolean 값을 갖는) attribute는 ''를 반환한다. 이러한 성질 때문에 attribute의 존재를 검사하는 작업에서 오류가 나기 쉽다. hasAttribute를 사용하도록 하자.
+
+# 081 - Drink Water
+
+## querySelectorAll이 반환하는 값
+
+querySelectorAll은 NodeList를 반환하는데, 이건 배열이 아니라서 map이나 find같은 배열 메서드를 사용할 수 없다. spread 연산자등을 사용해 배열로 변환해준 다음에 사용하자.
+
+## grid 아이템들의 흐르는 방향 전환
+
+grid-auto-flow를 이용하면 grid 아이템의 흐르는 방향을 바꿀 수 있다.
+
+```css
+.container {
+  grid-auto-flow: column;
+}
+```
