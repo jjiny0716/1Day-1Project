@@ -799,3 +799,23 @@ grid-auto-flow를 이용하면 grid 아이템의 흐르는 방향을 바꿀 수 
   grid-auto-flow: column;
 }
 ```
+
+# 082 - Random Picker Visualizer
+
+## Promise를 이용한 sleep함수의 원리
+
+그동안 프로그램 흐름을 지연시키기 위해 다음과 같은 코드를 가져다 사용했다.
+
+```js
+export function sleep(ms) {
+  return new Promise((r) => setTimeout(r, ms));
+}
+```
+
+위 함수를 await이나 then과 함께 사용하면 딜레이를 줄 수 있는데, 그동안 내부 동작을 그냥 막연히 생각하고 있었던 것 같다. 정확히 어떻게 작동하는 것일까? 다음의 내용들을 잘 기억해보면 알 수 있다.
+
+- Promise생성자는 함수를 인자로 받고, 그 함수는 resolve와 reject라는 2개의 함수형 인자를 받음.
+- resolve함수는 정상 처리, reject함수는 예외 생성에 사용됨.
+- setTimeout은 인자로 함수와 ms단위의 delay를 받는다.
+
+즉. 위의 코드는 ms만큼의 시간이 지난 후, 생성한 Promise를 resolve하여 다음 코드로 넘어가도록 하는 것을 알 수 있다.

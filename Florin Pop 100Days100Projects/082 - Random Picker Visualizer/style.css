@@ -1,0 +1,59 @@
+:root {
+  --color-blue: #2B88F0;
+  --color-deep-blue: #273C75;
+  --color-orange: #F0932B;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--color-blue);
+}
+
+#app {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.random-picker {
+  width: 600px;
+}
+
+.random-picker .description {
+  font-size: 1.2em;
+  text-align: center;
+  color: #fff;
+}
+
+.random-picker .choice-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.0em;
+  font-family: 'Open Sans', sans-serif;
+  resize: none;
+}
+
+.random-picker .choice-container {
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
+}
+
+.random-picker .choice-container .choice {
+  padding: 10px 20px;
+  border-radius: 36px;
+  margin: 5px 3px;
+  color: #fff;
+  background-color: var(--color-orange);
+}
+
+.random-picker .choice-container .choice.selected {
+  background-color: var(--color-deep-blue);
+}
