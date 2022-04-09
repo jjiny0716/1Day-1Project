@@ -753,6 +753,26 @@ grid 컨테이너에 1px의 border를 가지는 아이템 4개를 2x2로 배치�
 
 쉽다!
 
+# 072 - Instagram Image Feed
+
+## aspect-ratio
+
+이미지의 크기를 정사각형으로 맞추고 싶었는데, 컨테이너의 크기가 동적으로 변화할 수 있는 상태였기에, width와 height를 같은 값으로 지정해주기 어려운 상황이었다. 이럴때 aspect-ratio 속성을 사용해보자. aspect-ratio로 box의 가로세로 비율을 지정해줄 수 있다.
+
+```css
+.square {
+  aspect-ratio: 1;
+}
+
+.fhd {
+  aspect-ratio: 16 / 9;
+}
+```
+
+## response.ok
+
+api호출 후 정상적인 응답을 받았다면, response.ok의 값은 true이고, 에러가 발생했다면 response.ok의 값이 false가 된다. 이를 이용하여 fetch를 이용할 때, response.ok가 false일 때 예외처리를 할 수 있겠다.
+
 # 073 - Form Validation
 
 ## 컴포넌트화
