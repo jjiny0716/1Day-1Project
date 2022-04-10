@@ -839,3 +839,10 @@ export function sleep(ms) {
 - setTimeout은 인자로 함수와 ms단위의 delay를 받는다.
 
 즉. 위의 코드는 ms만큼의 시간이 지난 후, 생성한 Promise를 resolve하여 다음 코드로 넘어가도록 하는 것을 알 수 있다.
+
+# 083 - Youtube Video Suggestions UI
+
+## Form elements는 font-family를 자동으로 상속하지 않는다.
+
+font-family를 body에 적용할 때, 가끔씩 일부 태그에 해당 font-family가 상속되지 않는 현상을 발견했다. 버그인가 했지만, 검색해보니 form elements는 font-family를 상속하지 않는다고 한다. 수동으로 font-family를 정해주는 방법밖에 없을 것 같다.  
+위의 주제에 대한 [스택오버플로우](https://stackoverflow.com/questions/26140050/why-is-font-family-not-inherited-in-button-tags-automatically) 글을 읽어보니 도움이 되었다.

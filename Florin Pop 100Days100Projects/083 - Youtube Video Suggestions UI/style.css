@@ -1,0 +1,117 @@
+:root {
+  --color-header-background: #9047AE;
+  --color-background: #E0E1E2;
+  --color-light-black: #111;
+  --color-gray: #515253;
+  --color-light-gray: #b1b2b3;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  background-color: var(--color-background);
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.suggestion-appender {
+  width: 100%;
+  padding: 20px 0;
+  background-color: var(--color-header-background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.suggestion-appender .title {
+  margin: 0 0 10px 0;
+  font-weight: 500;
+  color: #fff;
+}
+
+.suggestion-appender .suggestion-input {
+  width: 500px;
+  height: 70px;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.85em;
+  resize: none;
+}
+
+.suggestions {
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestions .suggestion {
+  width: 700px;
+  padding: 10px 20px;
+  background-color: #fff;
+  display: flex;
+}
+
+.suggestions .suggestion:not(:last-child) {
+  border-bottom: 1px solid var(--color-light-gray);
+}
+
+.suggestions .suggestion .vote {
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.suggestions .suggestion .vote .vote-btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-light-gray);
+  border-radius: 50%;
+  margin-bottom: 10px;
+  color: var(--color-light-gray);
+  font-size: 1.2em;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.suggestions .suggestion .vote .vote-btn:active {
+  transform: scale(0.95);
+}
+
+.suggestions .suggestion .vote .vote-btn.active {
+  color: var(--color-gray);
+  border-color: var(--color-gray);
+}
+
+.suggestions .suggestion .vote .vote-count {
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: 400;
+  color: var(--color-light-black);
+}
+
+.suggestions .suggestion .vote .vote-text {
+  margin: 0;
+  font-weight: 400;
+  color: var(--color-light-black);
+}
+
+.suggestions .suggestion .content {
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestions .suggestion .content .suggestion-title {
+  margin: 0;
+  font-size: 1.1em;
+  color: var(--color-light-black);
+}
