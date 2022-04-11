@@ -1,0 +1,29 @@
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background-image: url("./img/cat1.jpg");
+  background-size: cover;
+}
+
+.loading-blur-screen {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-blur-screen .blur-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+}
+
+.loading-blur-screen .percentage {
+  position: relative;
+  font-size: 3.0em;
+  color: #fff;
+  z-index: 1;
+}
