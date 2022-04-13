@@ -849,4 +849,23 @@ font-family를 body에 적용할 때, 가끔씩 일부 태그에 해당 font-fam
 
 # 088 - Blurry Loading
 
+# 089 - Rain Drop
+
+## requestAnimationFrame으로 렌더링 최적화하기
+
+setInterval을 이용해 업데이트와 렌더링을 16ms마다 하도록 코드를 작성했다. 그런데 requestAnimationFrame을 이용하면 렌더링을 최적화 할 수 있다는 내용이 기억나서 시도해보았다. 잘 동작했고, 이렇게 requestAnimationFrame을 이용해 애니메이션을 구현하면 다음과 같은 특징이 있다.
+
+- 사용자의 모니터 주사율에 따라 결정된 프레임에 영향을 받음
+- 속도 조절 불가능
+- 적절한 프레임 속도로 실행되어 setInterval에 비해 부드럽게 렌더링된다.
+- 탭 비활성화, 애니메이션 영역을 벗어난 경우 실행되지 않음.
+
+### requestAnimationFrame의 문제점
+
+사용자 모니터의 주사율에 따라 다르게 동작할 수 있다. 보통의 모니터는 60hz의 주사율을 가지고있어서, requestAnimationFrame을 이용해 애니메이션을 구현했을 때 1초에 60번 실행될 것이라 기대할 수 있지만, 144hz, 240hz등의 고주사율 모니터에선 1초에 144번 이상 실행되게 된다.
+
+### 내가 생각한 해결법
+
+어떻게 해결할 수 있을까? 아마 상태의 변화와 렌더링을 분리를 하고, 렌더링에만 requestAnimationFrame을 사용하면 문제를 해결할 수 있을 것으로 보인다. 왜냐하면 requestAnimationFrame을 이용해 상태변화를 일으키면, 해당 코드가 정해진 시간동안 실행되는 횟수가 사용자 모니터의 주사율에 따라 달라지기 때문이다. 컴포넌트의 render 메서드에 해당 내용을 추상화할 수 있으면 좋을 것 같다.
+
 # 093 - Incrementing Counter
