@@ -869,3 +869,5 @@ setInterval을 이용해 업데이트와 렌더링을 16ms마다 하도록 코�
 어떻게 해결할 수 있을까? 아마 상태의 변화와 렌더링을 분리를 하고, 렌더링에만 requestAnimationFrame을 사용하면 문제를 해결할 수 있을 것으로 보인다. 왜냐하면 requestAnimationFrame을 이용해 상태변화를 일으키면, 해당 코드가 정해진 시간동안 실행되는 횟수가 사용자 모니터의 주사율에 따라 달라지기 때문이다. 컴포넌트의 render 메서드에 해당 내용을 추상화할 수 있으면 좋을 것 같다.
 
 # 093 - Incrementing Counter
+
+# 096 - Waves

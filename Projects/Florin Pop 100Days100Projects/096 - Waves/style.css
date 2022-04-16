@@ -1,0 +1,46 @@
+:root {
+  --color-skyblue: #5295F1;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  background-color: var(--color-skyblue);
+}
+
+#app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.description {
+  letter-spacing: 0.1em;
+  text-transform: capitalize;
+}
+
+.wave-dots-container {
+  display: grid;
+  gap: 15px;
+}
+
+.wave-dots-container .dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.wave-dots-container .dot.grow {
+  transform: scale(2.0);
+}

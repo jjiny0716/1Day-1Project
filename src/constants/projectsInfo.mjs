@@ -95,6 +95,9 @@ const projectTitles = [
   "",
   "",
   "Incrementing Counter",
+  "",
+  "",
+  "Waves",
 ];
 
 const projectsInfo = {};
