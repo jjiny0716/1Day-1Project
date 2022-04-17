@@ -10,7 +10,7 @@ export default class ProjectLinkFigure extends Component {
     const { title, imageLink } = this.props;
     return `
     <figure class="project">
-      <img class="project-thumbnail" src="${imageLink}" alt="Project thumbnail" />
+      <img class="project-thumbnail" src="${imageLink}" alt="Project thumbnail" loading="lazy" />
       <figcaption class="project-title">${title}</figcaption>
     </figure>
     `;
