@@ -1,5 +1,5 @@
 import NewYearTimer from "./NewYearTimer.mjs";
-import SnowflakeGeneratorBuilder from "./snowflakeGenerator.mjs";
+import SnowflakeGeneratorBuilder from "./SnowflakeGenerator.mjs";
 
 const newYearTimer = new NewYearTimer(document.querySelector(".new-year-timer"));
 const snowflakeGenerator = new SnowflakeGeneratorBuilder()

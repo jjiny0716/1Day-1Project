@@ -1,7 +1,7 @@
 "use strict";
 
 export default class Particle {
-  constructor(_pos, _vel, _acc, _color, _ctx, _radius = 3, _maxSpeed = 2) {
+  constructor(_pos, _vel, _acc, _color, _ctx, _radius = 3, _maxSpeed = 3) {
     this.pos = _pos;
     // prevPos
     this.vel = _vel;
@@ -16,8 +16,8 @@ export default class Particle {
   getForceByField(field, fieldSize) {
     const y = Math.floor(this.pos[1] / fieldSize);
     const x = Math.floor(this.pos[0] / fieldSize);
-    this.acc[0] += field[y][x][0];
-    this.acc[1] += field[y][x][1];
+    this.acc[0] = field[y][x][0];
+    this.acc[1] = field[y][x][1];
   }
 
   update() {
@@ -26,14 +26,16 @@ export default class Particle {
     this.vel[1] += this.acc[1];
 
     // 정규화
-    const size = Math.sqrt(Math.pow(this.vel[0] + this.acc[0], 2) + Math.pow(this.vel[1] + this.acc[1], 2)) ;
+    const size = Math.sqrt(Math.pow(this.vel[0], 2) + Math.pow(this.vel[1], 2));
     if (size > this.maxSpeed) {
-      this.vel[0] /= size * this.maxSpeed;
-      this.vel[1] /= size * this.maxSpeed;
+      const angle = Math.atan2(this.vel[0], this.vel[1]);
+      this.vel[0] = this.vel[0] / size * this.maxSpeed;
+      this.vel[1] = this.vel[1] / size * this.maxSpeed;
     }
     
     this.pos[0] += this.vel[0];
     this.pos[1] += this.vel[1];
+    // 화면 벗어나면 랜덤한 위치에 재생성
     if (this.pos[0] < 0 || this.pos[1] < 0 || this.pos[0] >= window.innerWidth || this.pos[1] >= window.innerHeight) {
       this.pos = [Math.floor(Math.random() * window.innerWidth), Math.floor(Math.random() * window.innerHeight)];
       this.vel = [0, 0];
@@ -43,8 +45,8 @@ export default class Particle {
 
   updateAfterimages() {
     for (let i = 0; i < this.afterimages.length ; i++) {
-      this.afterimages[i].transparency -= 2;
-      this.afterimages[i].size -= 2;
+      this.afterimages[i].transparency -= 5;
+      this.afterimages[i].size -= 5;
       if (this.afterimages[i].transparency <= 0) this.afterimages.splice(i, 1);
     }
     this.afterimages.push({

@@ -1,11 +1,12 @@
 "use strict";
+import { Perlin } from './Perlin.mjs';
 import Particle from "./Particle.mjs";
 //"rgba(255, 255, 255, 0.1)";
 const BACKGROUND_COLOR = "#000000";
 const PARTICLE_COLOR = "#ffffff"
 const WIDTH = window.innerWidth;
 const HEIGHT = window.innerHeight;
-const NUMBER_OF_PARTICLES = 20;
+const NUMBER_OF_PARTICLES = 100;
 const FIELD_SIZE = 20;
 const particles = [];
 const field = [];
@@ -36,11 +37,15 @@ function createParticles() {
 }
 
 function createFields() {
-  const vectors = [[0, 0.001],[0.001, 0.001],[0.001, 0],[0.001, -0.001],[0, -0.001],[-0.001, -0.001],[-0.001, 0],[-0.001, 0.001]];
-  for (let y = 0 ; y < Math.ceil(HEIGHT / FIELD_SIZE) ; y++) {
+  const perlin = new Perlin(Math.random());
+  const rowCount = Math.ceil(HEIGHT / FIELD_SIZE);
+  const colCount = Math.ceil(WIDTH / FIELD_SIZE)
+  for (let y = 0 ; y < rowCount ; y++) {
     const row = [];
-    for (let x = 0 ; x < Math.ceil(WIDTH / FIELD_SIZE) ; x++) {
-      row.push([...vectors[Math.floor(Math.random() * 8)]]);
+    for (let x = 0 ; x < colCount ; x++) {
+      const value = perlin.noise(x / colCount, y / rowCount, 0);
+      const angle = value * 2 * Math.PI;
+      row.push([Math.cos(angle) / 25, Math.sin(angle) / 25]);
     }
     field.push(row);
   }
@@ -65,11 +70,16 @@ function drawAllParticle() {
   }
 }
 
-function timerHandler() {
+function startRender() {
+  requestAnimationFrame(render);
+}
+
+function render() {
   clearBackground();
   updateAllParticle();
   drawAllParticle();
+  requestAnimationFrame(render);
 }
 
 setup();
-setInterval(timerHandler, 10);
+startRender();
