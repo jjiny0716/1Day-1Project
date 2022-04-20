@@ -1,10 +1,10 @@
 export default class Target {
-  constructor(_pos, _ctx) {
-    this.pos = _pos;
+  constructor(pos, ctx) {
+    this.pos = pos;
     this.radius = 0;
     this.maxRadius = 30;
     this.state = "grow";
-    this.ctx = _ctx;
+    this.ctx = ctx;
   }
 
   update() {
