@@ -3,7 +3,7 @@ import {msToReadableTime} from "../utils/time.mjs";
 
 export default class Stats extends Component {
   template() {
-    const { time, hits, missed, speed } = this.props;
+    const { time, hits, missed, speed } = this.props.stats;
     const accuracy = (hits * 100 / (missed + hits)).toFixed(1);
     return `
       <span class="time">Time: <span class="stat-value">${msToReadableTime(time)}</span></span>

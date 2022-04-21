@@ -16,9 +16,17 @@ li {
 }
 
 body {
+  height: 100vh;
   margin: 0;
   font-family: "Roboto", sans-serif;
   background-color: #f6f6f6;
+}
+
+#app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header {
@@ -28,6 +36,30 @@ body {
 
 .header .title {
   font-size: 2.5em;
+}
+
+.main {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-modal {
+  width: 600px;
+  /* height: 400px; */
+  padding: 50px;
+  border: 1px solid black;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome-modal .start-btn {
+  padding: 5px 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2em;
 }
 
 .game {
@@ -46,11 +78,11 @@ body {
   justify-content: space-between;
 }
 
-.game-header span {
+.stats span {
   font-size: 1.1em;
 }
 
-.game-header .stat-value {
+.stats .stat-value {
   color: var(--color-theme);
   margin-right: 15px;
 }
@@ -74,7 +106,27 @@ canvas {
   border: 1px solid black;
 }
 
-.leader-board {
+.result-modal {
+  width: 600px;
+  padding: 40px;
+  border: 1px solid black;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result-modal .stats {
+  margin-bottom: 20px;
+}
+
+.result-modal .restart-btn {
+  padding: 5px 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2em;
+}
+
+.leaderboard {
   display: flex;
   flex-direction: column;
   align-items: center;
