@@ -5,6 +5,7 @@ import ResultModal from "./components/ResultModal.mjs";
 import Leaderboard from "./components/Leaderboard.mjs";
 
 import { appState } from "./constants/appState.mjs";
+import { leaderboardStore } from './store/LeaderboardStore.mjs';
 
 export default class App extends Component {
   setup() {
@@ -16,6 +17,7 @@ export default class App extends Component {
         missed: 0,
         speed: 0,
       },
+      leaderboardData: leaderboardStore.getLeaderboardData() ?? [],
     };
   }
 
@@ -57,7 +59,12 @@ export default class App extends Component {
         };
       });
     } else if (name === "Leaderboard") {
-      return new Leaderboard(target);
+      const { leaderboardData } = this.state;
+      return new Leaderboard(target, () => {
+        return {
+          data: leaderboardData,
+        };
+      });
     }
   }
 
@@ -70,5 +77,23 @@ export default class App extends Component {
       currentAppState: appState.RESULT,
       gameResult: result,
     });
+    this.updateLeaderboardData(result);
+  }
+
+  updateLeaderboardData(data) {
+    console.log(data);
+    const { time, hits, missed } = data;
+    const { leaderboardData } = this.state;
+    const newData = {
+      time,
+      hits,
+      missed,
+    };
+    leaderboardData.push(newData);
+    leaderboardData.sort((a, b) => (a.time === b.time ? b.hits / b.missed - a.hits / a.missed : b.time - a.time));
+    if (leaderboardData.length > 3) leaderboardData.pop();
+    console.log(leaderboardData);
+    this.setState({ leaderboardData });
+    leaderboardStore.storeLeaderboardData(leaderboardData);
   }
 }

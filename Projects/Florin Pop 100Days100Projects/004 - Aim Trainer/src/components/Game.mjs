@@ -4,6 +4,7 @@ import Hearts from './Hearts.mjs'
 import GameScreen from '../gameClass/GameScreen.mjs';
 import Target from '../gameClass/Target.mjs';
 
+import { GAME_INITIAL_TARGET_ADD_DELAY, GAME_MINIMUM_TARGET_ADD_DELAY } from '../constants/gameConstants.mjs';
 import { CANVAS_WIDTH, CANVAS_HEIGHT, CANVAS_BACKGROUND_COLOR, CANVAS_TARGET_COLOR } from '../constants/canvasConstants.mjs';
 import { getDistance } from '../utils/getDistance.mjs';
 
@@ -55,8 +56,8 @@ export default class Game extends Component {
     // game
     this.isGameEnd = false;
     this.targets = [];  
-    this.targetAddDelay = 1000;
-    this.minTargetAddDelay = 250;
+    this.targetAddDelay = GAME_INITIAL_TARGET_ADD_DELAY;
+    this.minTargetAddDelay = GAME_MINIMUM_TARGET_ADD_DELAY;
     this.gameScreen = new GameScreen(this.target.querySelector("#game-canvas"), {
       width: CANVAS_WIDTH,
       height: CANVAS_HEIGHT,
@@ -80,8 +81,8 @@ export default class Game extends Component {
   }
 
   addTarget() {
-    const x = Math.floor(Math.random() * CANVAS_WIDTH - 20) + 10;
-    const y = Math.floor(Math.random() * CANVAS_HEIGHT - 20) + 10;
+    const x = Math.floor(Math.random() * (CANVAS_WIDTH - 20)) + 10;
+    const y = Math.floor(Math.random() * (CANVAS_HEIGHT - 20)) + 10;
     this.targets.push(new Target([x, y], this.ctx));
     if (!this.isGameEnd) setTimeout(() => {this.addTarget()}, this.targetAddDelay);
   }
