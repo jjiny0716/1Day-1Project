@@ -81,7 +81,6 @@ export default class App extends Component {
   }
 
   updateLeaderboardData(data) {
-    console.log(data);
     const { time, hits, missed } = data;
     const { leaderboardData } = this.state;
     const newData = {
@@ -92,7 +91,6 @@ export default class App extends Component {
     leaderboardData.push(newData);
     leaderboardData.sort((a, b) => (a.time === b.time ? b.hits / b.missed - a.hits / a.missed : b.time - a.time));
     if (leaderboardData.length > 3) leaderboardData.pop();
-    console.log(leaderboardData);
     this.setState({ leaderboardData });
     leaderboardStore.storeLeaderboardData(leaderboardData);
   }

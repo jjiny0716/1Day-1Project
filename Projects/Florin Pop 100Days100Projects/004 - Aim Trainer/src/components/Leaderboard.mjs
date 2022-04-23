@@ -16,29 +16,9 @@ export default class Leaderboard extends Component {
             <span class="rank">${index + 1}</span>
             Time: <span class="rank-stat-value">${msToReadableTime(time)}</span> Hits: <span class="rank-stat-value">${hits}</span> Accuracy: <span class="rank-stat-value">${isNaN(accuracy) ? "0.0" : accuracy}%</span>
           </li>`;
-        })}
+        }).join('')}
       </ul>
     </div>
     `;
   }
-}
-
-{
-  /* <div class="leaderboard">
-  <h3 class="leaderboard-title">Top 3 record</h3>
-  <ul class="records">
-    <li class="record">
-      <span class="rank">1</span>
-      Hits: <span class="rank-stat-value">109</span> Time: <span class="rank-stat-value">00:53:3</span> Accuracy: <span class="rank-stat-value">97.4%</span>
-    </li>
-    <li class="record">
-      <span class="rank">2</span>
-      Hits: <span class="rank-stat-value">109</span> Time: <span class="rank-stat-value">00:53:3</span> Accuracy: <span class="rank-stat-value">97.4%</span>
-    </li>
-    <li class="record">
-      <span class="rank">3</span>
-      Hits: <span class="rank-stat-value">109</span> Time: <span class="rank-stat-value">00:53:3</span> Accuracy: <span class="rank-stat-value">97.4%</span>
-    </li>
-  </ul>
-</div> */
 }

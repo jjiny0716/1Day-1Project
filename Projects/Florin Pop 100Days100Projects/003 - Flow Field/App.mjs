@@ -1,7 +1,7 @@
 "use strict";
 import { Perlin } from './Perlin.mjs';
 import Particle from "./Particle.mjs";
-//"rgba(255, 255, 255, 0.1)";
+
 const BACKGROUND_COLOR = "#000000";
 const PARTICLE_COLOR = "#ffffff"
 const WIDTH = window.innerWidth;

@@ -8,8 +8,8 @@ https://jjiny0716.github.io/1Day-1Project/
 
 ## 기록
 
-- [freeCodeCamp 15 JS projects](Projects/Florin%20Pop%20100Days100Projects/learned.md)
-- [Florin Pop 100Days100Projects](Projects/freeCodeCamp%2015%20JS%20projects/learned.md)
+- [freeCodeCamp 15 JS projects](Projects/freeCodeCamp%2015%20JS%20projects/learned.md)
+- [Florin Pop 100Days100Projects](Projects/Florin%20Pop%20100Days100Projects/learned.md)
 
 ## 기술스택
 
