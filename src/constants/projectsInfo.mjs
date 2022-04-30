@@ -10,7 +10,7 @@ const projectTitles = [
   "Pokedex",
   "James Bond Tribute Page",
   "",
-  "",
+  "This or That (cats)",
   "",
   "",
   "",
