@@ -4,6 +4,8 @@ import theCatAPIClient from "./client/TheCatAPIClient.js";
 import ThisOrThat from "./components/ThisOrThat.js";
 import Leaderboard from "./components/Leaderboard.js";
 
+import { addCatToRanking, getCatRanking } from "./utils/firebase.js";
+
 export default class App extends Component {
   setup() {
     this.state = {
@@ -41,8 +43,14 @@ export default class App extends Component {
     }
   }
 
-  afterMount() {
+  async afterMount() {
     this.loadTwoCatData();
+    this.loadLeaderboardData();
+  }
+
+  async loadLeaderboardData() {
+    const leaderboardData = await getCatRanking();
+    this.setState({ leaderboardData });
   }
 
   async loadTwoCatData() {
@@ -58,29 +66,12 @@ export default class App extends Component {
   }
 
   selectCat(cat) {
-    this.addCatToLeaderboardData(cat);
+    this.addCatAndUpdateLeaderboard(cat);
     this.loadTwoCatData();
   }
 
-  addCatToLeaderboardData(cat) {
-    const { leaderboardData } = this.state;
-    let newLeaderboardData = [...leaderboardData];
-
-    // add new item
-    const targetItem = newLeaderboardData.find((item) => item.name === cat.name);
-    if (targetItem) {
-      targetItem.count++;
-    } else {
-      newLeaderboardData.push({ ...cat, count: 1 });
-    }
-
-    // sort items
-    newLeaderboardData = newLeaderboardData
-      .sort((a, b) => b.count - a.count)
-      .map((item, i) => {
-        return { ...item, place: i + 1 };
-      });
-
+  async addCatAndUpdateLeaderboard(cat) {
+    const newLeaderboardData = await addCatToRanking(cat);
     this.setState({
       leaderboardData: newLeaderboardData,
     });

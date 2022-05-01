@@ -90,6 +90,10 @@ body {
   cursor: pointer;
 }
 
+.select-card-container .select-button:disabled {
+  cursor: not-allowed;
+}
+
 .select-card-container .select-button:active {
   transform: scale(0.95);
 }

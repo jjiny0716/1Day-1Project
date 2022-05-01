@@ -9,7 +9,7 @@ export default class SelectCard extends Component {
       ${cat ? `<img src="${url}" alt="${name}"/>` : `<div class="loading-animation-background"></div>`}
     </div>
     ${cat ? `<p class="name">${name}</p>` : `<div class="loading-animation-background text"></div>`}
-    <button class="select-button">${"This"}</button>
+    <button class="select-button" ${cat ? "" : "disabled"}>${"This"}</button>
     `;
   }
 
