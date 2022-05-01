@@ -20,8 +20,7 @@ export default class RainDropGenerator extends Component {
 
   startRain() {
     this.addRainDropIntervalID = setInterval(this.addRainDrop.bind(this), 100);
-    // this.rainDropsUpdateIntervalID = setInterval(this.updateRainDrops.bind(this), 16);
-    this.rainDropsUpdateIntervalID = this.startUpdateRainDrops();
+    this.rainDropsUpdateIntervalID = setInterval(this.updateRainDrops.bind(this), 10);
   }
 
   stopRain() {
@@ -37,7 +36,7 @@ export default class RainDropGenerator extends Component {
     this.setState({ rainDrops });
   }
 
-  startUpdateRainDrops() {
+  updateRainDrops() {
     let { rainDrops } = this.state;
     rainDrops.forEach((rainDrop) => {
       rainDrop.progress += 0.5;
@@ -46,7 +45,6 @@ export default class RainDropGenerator extends Component {
     });
     rainDrops = rainDrops.filter((rainDrop) => rainDrop.progress < 100);
     this.setState({ rainDrops });
-    this.rainDropsUpdateIntervalID = requestAnimationFrame(this.startUpdateRainDrops.bind(this));
   }
 }
 
