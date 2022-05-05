@@ -870,4 +870,12 @@ setInterval을 이용해 업데이트와 렌더링을 16ms마다 하도록 코�
 
 # 093 - Incrementing Counter
 
+x
+
 # 096 - Waves
+
+x
+
+# 098 - FAQ
+
+x

@@ -98,6 +98,8 @@ const projectTitles = [
   "",
   "",
   "Waves",
+  "",
+  "FAQ"
 ];
 
 const projectsInfo = {};

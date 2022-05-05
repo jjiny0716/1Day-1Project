@@ -1,0 +1,68 @@
+:root {
+  --color-font: #222;
+  --color-background: #F0F0F0;
+  --color-gray: #777;
+  --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-background);
+  font-family: 'Radio Canada', sans-serif;
+  color: var(--color-font);
+}
+
+.faqs-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.faqs-container-title {
+  text-align: center;
+}
+
+.faq-container {
+  position: relative;
+  width: 600px;
+  padding: 25px;
+  border: 1px solid var(--color-gray);
+  border-radius: 6px;
+  margin: 15px 0;
+  transition: all 300ms ease;
+}
+
+.faq-container.active {
+  box-shadow: var(--shadow-medium);
+  background-color: #fff;
+}
+
+.faq-container .title {
+  margin: 0;
+}
+
+.faq-container .content {
+  margin: 20px 0 0 0;
+}
+
+.faq-container .faq-toggle-button {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  width: 30px;
+  height: 30px;
+  font-size: 1.7em;
+  border: none;
+  color: var(--color-gray);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.faq-container .faq-toggle-button .fa-angle-down {
+  padding-left: 6px;
+  font-size: 0.8em;
+}
