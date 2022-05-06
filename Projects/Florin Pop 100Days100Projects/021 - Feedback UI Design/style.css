@@ -1,0 +1,95 @@
+:root {
+  --color-white: #fff;
+  --color-background: #FEF9F2;
+  --shadow-button: 0 0px 8px rgba(0, 0, 0, 0.2);
+  --shadow-medium: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+*, *:before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: 'Radio Canada', sans-serif;
+  background-color: var(--color-background);
+}
+
+button.black {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #222;
+  cursor: pointer;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  padding: 30px;
+  border-radius: 6px;
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-medium);
+}
+
+.feedback-modal {
+  max-width: 400px;
+  text-align: center;
+}
+
+.feedback-modal .title {
+  margin: 0 0 20px 0;
+}
+
+.feedback-modal .ratings-container {
+  margin-bottom: 20px;
+}
+
+.feedback-modal .ratings-container button {
+  width: 80px;
+  height: 80px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  margin: 0 5px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.feedback-modal .ratings-container button:hover,
+.feedback-modal .ratings-container button.selected {
+  box-shadow: var(--shadow-button);
+}
+
+.feedback-modal .ratings-container button img {
+  width: 45px;
+  height: 45px;
+}
+
+.feedback-modal .ratings-container button .button-description {
+  margin: 5px 0 0 0;
+}
+
+
+.thankyou-modal {
+  text-align: center;
+}

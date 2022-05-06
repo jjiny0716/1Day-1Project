@@ -22,7 +22,7 @@ const projectTitles = [
   "Typing Speed Test",
   "Send Love Button",
   "",
-  "",
+  "Feedback UI Design",
   "Tricky Cookie",
   "Background Animations",
   "Hover Board",
